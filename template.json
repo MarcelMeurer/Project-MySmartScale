@@ -52,9 +52,6 @@
       "apiVersion": "2017-03-01-preview",
       "name": "[concat(parameters('siteName'), '/MySmartScale')]",
       "location": "[resourceGroup().location]",
-      "dependsOn": [
-          "[resourceId('Microsoft.Sql/servers', parameters('siteName'))]"
-      ],
       "sku": {
           "name": "S0",
           "tier": "Standard"
@@ -63,7 +60,10 @@
       "properties": {
           "collation": "SQL_Latin1_General_CP1_CI_AS",
           "catalogCollation": "SQL_Latin1_General_CP1_CI_AS"
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('siteName'))]"
+      ]
     },
     {
       "type": "Microsoft.Web/serverfarms",
