@@ -86,7 +86,7 @@
           "targetWorkerSizeId": 0
       },
       "dependsOn": [
-        "[concat(resourceId('Microsoft.Sql/servers/databases', parameters('siteName')), '/MySmartScale')]"
+        "[resourceId('Microsoft.Sql/servers/databases', concat(parameters('siteName'), '/MySmartScale'))]"
       ]
     },
     {
@@ -124,7 +124,7 @@
         }
       ],
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]"
+        "[resourceId('Microsoft.Sql/servers/databases', concat(parameters('siteName'), 'MySmartScale'))]"
       ]
   },
   {
