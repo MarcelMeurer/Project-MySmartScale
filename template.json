@@ -85,9 +85,20 @@
           "targetWorkerCount": 0,
           "targetWorkerSizeId": 0
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
-      ]
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "kind": "web",
+      "name": "[parameters('siteName')]",
+      "apiVersion": "2015-05-01",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "Application_Type": "web"
+      },
+      "dependsOn": []
     },
     {
       "type": "Microsoft.Web/sites",
@@ -124,6 +135,8 @@
         }
       ],
       "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
+        "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
         "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
       ]
   },
@@ -138,22 +151,11 @@
           "httpsOnly": true
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
+        "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
       ]
     },    
-    {
-      "type": "Microsoft.Insights/components",
-      "kind": "web",
-      "name": "[parameters('siteName')]",
-      "apiVersion": "2015-05-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-        "Application_Type": "web"
-      },
-      "dependsOn": []
-    },
     {
       "type": "Microsoft.Web/serverfarms",
       "sku": {
