@@ -180,7 +180,7 @@
             "ida:ClientId": "..........",
             "ida:ClientSecret": "........",
             "ida:Domain": "..........",
-            "ida:TenantId": "..........",
+            "ida:TenantId": ".........."
           }, 
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
