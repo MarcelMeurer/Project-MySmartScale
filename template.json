@@ -134,7 +134,10 @@
           "apiVersion": "2016-08-01",
           "properties": {
             "ScContext":"[variables('connectionString')]"
-          }
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
+          ]
         }
       ],
       "dependsOn": [
