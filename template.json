@@ -123,7 +123,10 @@
             "LogType": "[parameters('LogType')]",
             "TimeField": "[parameters('TimeField')]",
             "JsonMustContain": ""
-          }
+          }, 
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
+          ]
         },
         {
           "name": "connectionstrings",
