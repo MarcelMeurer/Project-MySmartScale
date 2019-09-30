@@ -96,7 +96,7 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2016-08-01",
-      "name": "[concat(parameters('siteName'),'-data')]]",
+      "name": "[concat(parameters('siteName'),'-data')]",
       "location": "West Europe",
       "kind": "app",
       "properties": {
