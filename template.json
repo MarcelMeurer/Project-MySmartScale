@@ -118,11 +118,22 @@
           "apiVersion": "2016-08-01",
           "properties": {
             "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
-            "Workspace_Id": "[parameters('Workspace_Id')]",
-            "Workspace_Key": "[parameters('Workspace_Key')]",
-            "LogType": "[parameters('LogType')]",
-            "TimeField": "[parameters('TimeField')]",
-            "JsonMustContain": ""
+            "AzureControl-ConsolidateSessionDataLastCompleteTimeInMinutes": "1",
+            "AzureControl-DefaultTimeouForAzureAccesstInSeconds": "30",
+            "AzureControl-PowerStateChangeInAzureTimeoutInSeconds": "180",
+            "AzureControl-PowerStateUpdateToOldInHours": "8",
+            "AzureControl-RefreshConfigurationEachMinutes": "5",
+            "AzureControl-RetryCount": "99",
+            "AzureControl-SessionTimeBackValidInMinutes": "15",
+            "AzureControl-TryToBuildSiteCollectionStateAfterAlongerBreak": "1",
+            "AzureControl-WaitForCheckPowerStateAgainInMinutes": "0",
+            "cfg:DefaultTenantGuid": "..........",
+            "ida:ClientId": "..........",
+            "ida:Domain": "..........",
+            "ida:TenantId": "..........",
+            "AzureMonitor-Key": "",
+            "AzureMonitor-LogTypeName": "MySmartScale",
+            "AzureMonitor-Workspace": ""
           }, 
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
@@ -156,6 +167,37 @@
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('siteName'))]",
           "httpsOnly": true
       },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
+            "auth:AdminUserGroup": "",
+            "ida:AADInstance": "https://login.microsoftonline.com/",
+            "cfg:DefaultTenantGuid": "..........",
+            "ida:ClientId": "..........",
+            "ida:ClientSecret": "........",
+            "ida:Domain": "..........",
+            "ida:TenantId": "..........",
+          }, 
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
+          ]
+        },
+        {
+          "name": "connectionstrings",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "DbContext":"[variables('connectionString')]"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
+          ]
+        }
+      ],
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
