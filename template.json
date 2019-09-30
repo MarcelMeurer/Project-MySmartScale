@@ -21,33 +21,26 @@
     "TimeField": {
       "defaultValue": "TimeStamp",
       "type": "string"
+    },
+    "SqlPassword": {
+      "defaultValue": "AsuperSecretPasswordForThe@DataBas1!",
+      "type": "string"
     }
   },
   "variables": {
     "subscriptionId": "[subscription().subscriptionId]",
     "resourcegroupName": "[resourceGroup().name]",
     "serverfarmsName": "ServerFarmPlan",
-    "storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]"
+    "storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]",
+    "connectionString" : "[concat('Server=tcp:',parameters('siteName'),'.database.windows.net,1433;Initial Catalog=MySmartScale;Persist Security Info=False;User ID=dbadmin;Password=',parameters('SqlPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=90;')]"
   },
   "resources": [
-    {
-      "apiVersion": "2018-02-01",
-      "name": "1046f72e-14d8-44db-81d1-5cfb2bec048a",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    },
     {
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2015-05-01-preview",
       "name": "[parameters('siteName')]",
       "location": "[resourceGroup().location]",
+      "administratorLoginPassword": "[parameters('SqlPassword')]",
       "kind": "v12.0",
       "properties": {
           "administratorLogin": "dbadmin",
@@ -91,7 +84,10 @@
           "reserved": false,
           "targetWorkerCount": 0,
           "targetWorkerSizeId": 0
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('siteName'))]"
+      ]
     },
     {
       "type": "Microsoft.Web/sites",
@@ -103,8 +99,32 @@
           "enabled": true,
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('siteName'))]",
           "httpsOnly": true
-      },      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]"
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
+            "Workspace_Id": "[parameters('Workspace_Id')]",
+            "Workspace_Key": "[parameters('Workspace_Key')]",
+            "LogType": "[parameters('LogType')]",
+            "TimeField": "[parameters('TimeField')]",
+            "JsonMustContain": ""
+          }
+        },
+        {
+          "name": "connectionstrings",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "ScContext":"[variables('connectionString')]"
+          }
+        }
+      ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', concat(parameters('siteName'), '/MySmartScale'))]"
       ]
   },
   {
