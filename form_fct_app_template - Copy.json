@@ -1,0 +1,306 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "siteName": {
+      "defaultValue": "a-unique-hostname",
+      "type": "String"
+    },
+    "Workspace_Id": {
+      "defaultValue": "Enter your LogAnalytics workspace id here (or later in AppSettings)",
+      "type": "String"
+    },
+    "Workspace_Key": {
+      "defaultValue": "Enter your LogAnalytics workspace key here (or later in AppSettings)",
+      "type": "String"
+    },
+    "LogType": {
+      "defaultValue": "IoTData",
+      "type": "String"
+    },
+    "TimeField": {
+      "defaultValue": "TimeStamp",
+      "type": "String"
+    }
+  },
+  "variables": {
+    "subscriptionId": "[subscription().subscriptionId]",
+    "resourcegroupName": "[resourceGroup().name]",
+    "serverfarmsName": "ServerFarmPlan",
+    "storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2018-02-01",
+      "name": "1046f72e-14d8-44db-81d1-5cfb2bec048a",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    },
+    {
+      "type": "microsoft.insights/components",
+      "kind": "web",
+      "name": "[parameters('siteName')]",
+      "apiVersion": "2015-05-01",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "Application_Type": "web",
+        "Flow_Type": null,
+        "Request_Source": "IbizaWebAppExtensionCreate",
+        "HockeyAppId": null,
+        "SamplingPercentage": null
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "sku": {
+        "name": "Y1",
+        "tier": "Dynamic",
+        "size": "Y1",
+        "family": "Y",
+        "capacity": 0
+      },
+      "kind": "functionapp",
+      "name": "[variables('serverfarmsName')]",
+      "apiVersion": "2016-09-01",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {
+        "name": "[variables('serverfarmsName')]",
+        "workerTierName": null,
+        "adminSiteName": null,
+        "hostingEnvironmentProfile": null,
+        "perSiteScaling": false,
+        "reserved": false,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp",
+      "name": "[parameters('siteName')]",
+      "apiVersion": "2016-08-01",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('siteName'),'.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('siteName'),'.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "virtualIP": null,
+            "thumbprint": null,
+            "toUpdate": null,
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
+        "reserved": false,
+        "siteConfig": null,
+        "scmSiteAlsoStopped": false,
+        "hostingEnvironmentProfile": null,
+        "clientAffinityEnabled": false,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 1536,
+        "dailyMemoryTimeQuota": 0,
+        "cloningInfo": null,
+        "httpsOnly": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
+        "[resourceId('Microsoft.Insights/components/', parameters('siteName'))]"
+      ],
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
+          ],
+          "tags": {
+            "displayName": "AppSettings"
+          },
+          "properties": {
+            "FUNCTIONS_EXTENSION_VERSION": "~1",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
+            "Workspace_Id": "[parameters('Workspace_Id')]",
+            "Workspace_Key": "[parameters('Workspace_Key')]",
+            "LogType": "[parameters('LogType')]",
+            "TimeField": "[parameters('TimeField')]",
+            "JsonMustContain": ""
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
+          ],
+          "properties": {
+            "RepoUrl": "https://github.com/MarcelMeurer/FunctionApp-to-LogAnalytics.git",
+            "branch": "master",
+            "IsManualIntegration": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "name": "[concat(parameters('siteName'), '/web')]",
+      "apiVersion": "2016-08-01",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php"
+        ],
+        "netFrameworkVersion": "v4.0",
+        "phpVersion": "5.6",
+        "pythonVersion": "",
+        "nodeVersion": "",
+        "linuxFxVersion": "",
+        "windowsFxVersion": null,
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "remoteDebuggingVersion": null,
+        "httpLoggingEnabled": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "[concat('$',parameters('siteName'))]",
+        "publishingPassword": null,
+        "azureStorageAccounts": {},
+        "metadata": null,
+        "connectionStrings": null,
+        "machineKey": null,
+        "handlerMappings": null,
+        "documentRoot": null,
+        "scmType": "None",
+        "use32BitWorkerProcess": true,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "javaVersion": null,
+        "javaContainer": null,
+        "javaContainerVersion": null,
+        "appCommandLine": "",
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false,
+            "virtualDirectories": null
+          }
+        ],
+        "winAuthAdminState": 0,
+        "winAuthTenantState": 0,
+        "customAppPoolIdentityAdminState": false,
+        "customAppPoolIdentityTenantState": false,
+        "runtimeADUser": null,
+        "runtimeADUserPassword": null,
+        "loadBalancing": "LeastRequests",
+        "routingRules": [],
+        "experiments": {
+          "rampUpRules": []
+        },
+        "limits": null,
+        "autoHealEnabled": false,
+        "autoHealRules": null,
+        "tracingOptions": null,
+        "vnetName": "",
+        "siteAuthEnabled": false,
+        "siteAuthSettings": {
+          "enabled": null,
+          "unauthenticatedClientAction": null,
+          "tokenStoreEnabled": null,
+          "allowedExternalRedirectUrls": null,
+          "defaultProvider": null,
+          "clientId": null,
+          "clientSecret": null,
+          "clientSecretCertificateThumbprint": null,
+          "issuer": null,
+          "allowedAudiences": null,
+          "additionalLoginParams": null,
+          "isAadAutoProvisioned": false,
+          "googleClientId": null,
+          "googleClientSecret": null,
+          "googleOAuthScopes": null,
+          "facebookAppId": null,
+          "facebookAppSecret": null,
+          "facebookOAuthScopes": null,
+          "twitterConsumerKey": null,
+          "twitterConsumerSecret": null,
+          "microsoftAccountClientId": null,
+          "microsoftAccountClientSecret": null,
+          "microsoftAccountOAuthScopes": null
+        },
+        "cors": {
+          "allowedOrigins": [
+            "https://functions.azure.com",
+            "https://functions-staging.azure.com",
+            "https://functions-next.azure.com"
+          ],
+          "supportCredentials": false
+        },
+        "push": null,
+        "apiDefinition": null,
+        "autoSwapSlotName": null,
+        "localMySqlEnabled": false,
+        "managedServiceIdentityId": null,
+        "xManagedServiceIdentityId": null,
+        "ipSecurityRestrictions": null,
+        "http20Enabled": false,
+        "minTlsVersion": "1.0",
+        "ftpsState": "AllAllowed",
+        "reservedInstanceCount": 0
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'.azurewebsites.net')]",
+      "apiVersion": "2016-08-01",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {
+        "siteName": "[parameters('siteName')]",
+        "domainId": null,
+        "hostNameType": "Verified"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
+      ]
+    }
+  ]
+}
