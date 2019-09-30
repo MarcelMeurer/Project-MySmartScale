@@ -39,11 +39,11 @@
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2015-05-01-preview",
       "name": "[parameters('siteName')]",
-      "location": "[resourceGroup().location]",
-      "administratorLoginPassword": "[parameters('SqlPassword')]",
+      "location": "[resourceGroup().location]",      
       "kind": "v12.0",
       "properties": {
           "administratorLogin": "dbadmin",
+          "administratorLoginPassword": "[parameters('SqlPassword')]",
           "version": "12.0"
       }
     },
