@@ -215,38 +215,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "name": "[concat(parameters('siteName'), '/web')]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "numberOfWorkers": 1,
-        "netFrameworkVersion": "v4.0",
-        "phpVersion": "5.6",
-        "pythonVersion": "",
-        "nodeVersion": "",
-        "linuxFxVersion": ""
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'.azurewebsites.net')]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "siteName": "[parameters('siteName')]",
-        "hostNameType": "Verified"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-      ]
     }
   ]
 }
