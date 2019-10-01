@@ -111,7 +111,11 @@
       "properties": {
           "enabled": true,
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('siteName'))]",
-          "httpsOnly": true
+          "httpsOnly": true,
+          "siteConfig":{
+            "alwaysOn":true,
+            "use32BitWorkerProcess":false
+          }
       },
       "resources": [
         {
@@ -133,6 +137,7 @@
             "ida:ClientId": "..........",
             "ida:Domain": "..........",
             "ida:TenantId": "..........",
+            "LicenseKey":"",
             "AzureMonitor-Key": "",
             "AzureMonitor-LogTypeName": "MySmartScale",
             "AzureMonitor-Workspace": ""
@@ -170,7 +175,11 @@
       "kind": "app",
       "properties": {
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('siteName'))]",
-          "httpsOnly": true
+          "httpsOnly": true,
+          "siteConfig":{
+            "alwaysOn":true,
+            "use32BitWorkerProcess":false
+          }
       },
       "resources": [
         {
