@@ -163,11 +163,13 @@
         },
         {
           "name": "web",
-          "type": "config",
+          "type": "sourcecontrols",
           "apiVersion": "2016-08-01",
-          "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
-          "branch": "master",
-          "IsManualIntegration": true,
+          "properties":{
+            "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
+            "branch": "master",
+            "IsManualIntegration": true
+          },
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
           ]
@@ -223,17 +225,6 @@
               "type": "SQLAzure"
             }
           },
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
-          ]
-        },
-        {
-          "name": "web",
-          "type": "config",
-          "apiVersion": "2016-08-01",
-            "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
-            "branch": "master",
-            "IsManualIntegration": true,
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
           ]
