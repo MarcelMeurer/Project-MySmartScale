@@ -209,7 +209,7 @@
             "ida:ClientSecret": "........",
             "ida:Domain": "..........",
             "ida:TenantId": "..........",
-            "PROJECT": "bin/Administration",
+            "PROJECT": "bin/Administration"
           }, 
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
