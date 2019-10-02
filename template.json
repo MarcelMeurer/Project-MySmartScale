@@ -140,7 +140,8 @@
             "LicenseKey":"",
             "AzureMonitor-Key": "",
             "AzureMonitor-LogTypeName": "MySmartScale",
-            "AzureMonitor-Workspace": ""
+            "AzureMonitor-Workspace": "",
+            "PROJECT": "bin/Endpoint"
           }, 
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
@@ -155,6 +156,19 @@
               "value": "[variables('connectionString')]",
               "type": "SQLAzure"
             }
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
+          ]
+        },
+        {
+          "name": "web",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
+            "branch": "master",
+            "IsManualIntegration": true
           },
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
@@ -194,7 +208,8 @@
             "ida:ClientId": "..........",
             "ida:ClientSecret": "........",
             "ida:Domain": "..........",
-            "ida:TenantId": ".........."
+            "ida:TenantId": "..........",
+            "PROJECT": "bin/Administration",
           }, 
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
@@ -209,6 +224,19 @@
               "value": "[variables('connectionString')]",
               "type": "SQLAzure"
             }
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
+          ]
+        },
+        {
+          "name": "web",
+          "type": "config",
+          "apiVersion": "2016-08-01",
+          "properties": {
+            "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
+            "branch": "master",
+            "IsManualIntegration": true
           },
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
