@@ -1,0 +1,44 @@
+﻿@using Microsoft.Azure.ActiveDirectory.GraphClient
+@model Administration.Models.AzureAdConnect.AadUser
+
+@{
+    ViewBag.Title = "User Profile";
+}
+<h2>@ViewBag.Title.</h2>
+
+@*<table class="table table-bordered table-striped">
+    <tr>
+        <td>Display Name</td>
+        <td>@Model.DisplayName</td>
+    </tr>
+    <tr>
+        <td>First Name</td>
+        <td>@Model.GivenName</td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>@Model.Surname</td>
+    </tr>
+</table>*@
+Hey:
+@TempData["userName"]
+Thanks
+<div class="col-md-3">
+    <img src="@ViewData["Picture"]" style="border-radius: 50%; height: 200px; width: 200px; margin: 20px;" />
+</div>
+@ViewData["Special"]
+<div class="col-md-3">
+    <img src="@TempData["userName"]" style="border-radius: 50%; height: 100px; width: 100px; margin: 20px;" />
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Working with users</h2>
+        <h3>@Model.DisplayName</h3>
+        <h3>@Model.Upn</h3>
+        <p><a class="btn btn-default" href="Account/signout">Sign out</a></p>
+    </div>
+</div>
+
+
+<img src="/UserProfile/Image/4" style="border-radius: 50%; height: 200px; width: 200px; margin: 20px;" />

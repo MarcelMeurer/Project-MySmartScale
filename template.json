@@ -133,7 +133,7 @@
             "AzureControl-SessionTimeBackValidInMinutes": "15",
             "AzureControl-TryToBuildSiteCollectionStateAfterAlongerBreak": "1",
             "AzureControl-WaitForCheckPowerStateAgainInMinutes": "0",
-            "cfg:DefaultTenantGuid": "..........",
+            "cfg:DefaultTenantGuid": "1AF04A50-3F2F-420A-93B8-2D2A1EFF6CF1",
             "ida:ClientId": "..........",
             "ida:Domain": "..........",
             "ida:TenantId": "..........",
@@ -247,88 +247,6 @@
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
         "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
-      ]
-    },    
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "sku": {
-        "name": "Y1",
-        "tier": "Dynamic",
-        "size": "Y1",
-        "family": "Y",
-        "capacity": 0
-      },
-      "kind": "functionapp",
-      "name": "[variables('serverfarmsName')]",
-      "apiVersion": "2016-09-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "name": "[variables('serverfarmsName')]"
-      },
-      "dependsOn": []
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "kind": "functionapp",
-      "name": "[parameters('siteName')]",
-      "apiVersion": "2016-08-01",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {
-        "enabled": true,
-        "hostNameSslStates": [
-          {
-            "name": "[concat(parameters('siteName'),'.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Standard"
-          },
-          {
-            "name": "[concat(parameters('siteName'),'.scm.azurewebsites.net')]",
-            "sslState": "Disabled",
-            "hostType": "Repository"
-          }
-        ],
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
-        "httpsOnly": false
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
-        "[resourceId('Microsoft.Insights/components/', parameters('siteName'))]"
-      ],
-      "resources": [
-        {
-          "name": "appsettings",
-          "type": "config",
-          "apiVersion": "2016-08-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-          ],
-          "tags": {
-            "displayName": "AppSettings"
-          },
-          "properties": {
-            "FUNCTIONS_EXTENSION_VERSION": "~1",
-            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
-            "Workspace_Id": "[parameters('Workspace_Id')]",
-            "Workspace_Key": "[parameters('Workspace_Key')]",
-            "LogType": "[parameters('LogType')]",
-            "TimeField": "[parameters('TimeField')]",
-            "JsonMustContain": ""
-          }
-        },
-        {
-          "apiVersion": "2016-08-01",
-          "name": "web",
-          "type": "config",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-          ],
-          "properties": {
-            "RepoUrl": "https://github.com/MarcelMeurer/FunctionApp-to-LogAnalytics.git",
-            "branch": "master",
-            "IsManualIntegration": true
-          }
-        }
       ]
     }
   ]
