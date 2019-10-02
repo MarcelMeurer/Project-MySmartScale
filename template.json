@@ -230,7 +230,7 @@
         {
           "name": "web",
           "type": "config",
-          "apiVersion": "2016-08-01","rep",
+          "apiVersion": "2016-08-01",
             "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
             "branch": "master",
             "IsManualIntegration": true,
