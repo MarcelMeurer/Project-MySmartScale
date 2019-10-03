@@ -162,7 +162,7 @@
             "ida:Domain": "..........",
             "ida:TenantId": "..........",
             "LicenseKey":"",
-            "AzureMonitor-Key": "",
+            "AzureMonitor-Key": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('siteName')), '2015-03-20').primarySharedKey]",
             "AzureMonitor-LogTypeName": "MySmartScale",
             "AzureMonitor-Workspace": "[reference(resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName'))).customerId]",
             "PROJECT": "bin/Endpoint"
