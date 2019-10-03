@@ -1,0 +1,865 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cassia</name>
+    </assembly>
+    <members>
+        <member name="T:Cassia.Impl.ClientDisplay">
+            <summary>
+            Default implementation of <see cref="T:Cassia.IClientDisplay"/>.
+            </summary>
+        </member>
+        <member name="T:Cassia.IClientDisplay">
+            <summary>
+            Information about a remote client's display.
+            </summary>
+        </member>
+        <member name="P:Cassia.IClientDisplay.BitsPerPixel">
+            <summary>
+            The number of bits used per pixel in the client's connection to the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.IClientDisplay.HorizontalResolution">
+            <summary>
+            The horizontal resolution of the client's display.
+            </summary>
+            <remarks>This may not be the same as the horizontal resolution of the client's monitor -- 
+            it only reflects the size of the RDP connection window on the client.</remarks>
+        </member>
+        <member name="P:Cassia.IClientDisplay.VerticalResolution">
+            <summary>
+            The vertical resolution of the client's display.
+            </summary>
+            <remarks>This may not be the same as the vertical resolution of the client's monitor -- 
+            it only reflects the size of the RDP connection window on the client.</remarks>
+        </member>
+        <member name="T:Cassia.Impl.NamespaceDoc">
+            <summary>
+            This namespace contains implementations of the various interfaces provided by Cassia.
+            It is not recommended that you use members of this namespace directly, 
+            as the API is likely to change from release ro release.
+            </summary>
+        </member>
+        <member name="T:Cassia.ConnectionState">
+            <summary>
+            Connection state of a session.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Active">
+            <summary>
+            A user is logged on to the session.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Connected">
+            <summary>
+            A client is connected to the session.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.ConnectQuery">
+            <summary>
+            The session is in the process of connecting to a client.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Shadowing">
+            <summary>
+            This session is shadowing another session.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Disconnected">
+            <summary>
+            The session is active, but the client has disconnected from it.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Idle">
+            <summary>
+            The session is waiting for a client to connect.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Listening">
+            <summary>
+            The session is listening for connections.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Reset">
+            <summary>
+            The session is being reset.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Down">
+            <summary>
+            The session is down due to an error.
+            </summary>
+        </member>
+        <member name="F:Cassia.ConnectionState.Initializing">
+            <summary>
+            The session is initializing.
+            </summary>
+        </member>
+        <member name="T:Cassia.ITerminalServer">
+            <summary>
+            Connection to a terminal server.
+            </summary>
+            <remarks>
+            <see cref="M:Cassia.ITerminalServer.Open"/> must be called before any operations can be performed on 
+            a remote terminal server.
+            </remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServer.GetSessions">
+            <summary>
+            Lists the sessions on the terminal server.
+            </summary>
+            <returns>A list of sessions.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServer.GetSession(System.Int32)">
+            <summary>
+            Retrieves information about a particular session on the server.
+            </summary>
+            <param name="sessionId">The ID of the session.</param>
+            <returns>Information about the requested session.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServer.Open">
+            <summary>
+            Opens a connection to the server.
+            </summary>
+            <remarks>
+            Call this before attempting operations that access information or perform operations
+            on a remote server. You can call this method for the local terminal server, but it is 
+            not necessary.
+            </remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServer.Close">
+            <summary>
+            Closes the connection to the server.
+            </summary>
+        </member>
+        <member name="M:Cassia.ITerminalServer.GetProcesses">
+            <summary>
+            Retrieves a list of processes running on the terminal server.
+            </summary>
+            <returns>A list of processes.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServer.GetProcess(System.Int32)">
+            <summary>
+            Retrieves information about a particular process running on the server.
+            </summary>
+            <param name="processId">The ID of the process.</param>
+            <returns>Information about the requested process.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServer.Shutdown(Cassia.ShutdownType)">
+            <summary>
+            Shuts down the terminal server.
+            </summary>
+            <param name="type">Type of shutdown requested.</param>
+        </member>
+        <member name="P:Cassia.ITerminalServer.Handle">
+            <summary>
+            Underlying connection to the terminal server.
+            </summary>
+            <remarks>
+            You can use this to access the underlying Windows terminal server handle if you 
+            want to perform an operation that Cassia does not yet support.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServer.IsOpen">
+            <summary>
+            Returns <c>true</c> if a connection to the server is currently open.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServer.ServerName">
+            <summary>
+            The name of the terminal server.
+            </summary>
+            <remarks>
+            It is not necessary to have a connection to the server open before 
+            retrieving this value.
+            </remarks>
+        </member>
+        <member name="T:Cassia.ITerminalServerHandle">
+            <summary>
+            Wraps the native terminal server handle.
+            </summary>
+            <remarks>
+            You need use this interface only when you want to directly access the Windows terminal server
+            handle to perform an operation that Cassia does not currently support.
+            </remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServerHandle.Open">
+            <summary>
+            Opens the terminal server handle.
+            </summary>
+        </member>
+        <member name="M:Cassia.ITerminalServerHandle.Close">
+            <summary>
+            Closes the terminal server handle.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServerHandle.Handle">
+            <summary>
+            The underlying terminal server handle provided by Windows in a call to WTSOpenServer.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServerHandle.ServerName">
+            <summary>
+            The name of the terminal server for this connection.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServerHandle.IsOpen">
+            <summary>
+            Returns <c>true</c> if the connection to the server is currently open.
+            </summary>
+        </member>
+        <member name="T:Cassia.ITerminalServicesManager">
+            <summary>
+            Top-level interface for enumerating and creating connections to terminal servers.
+            </summary>
+        </member>
+        <member name="M:Cassia.ITerminalServicesManager.GetSessions(System.String)">
+            <overloads>
+            <summary>
+            Lists the sessions on a given terminal server. Obsolete; use 
+            <see cref="M:Cassia.ITerminalServer.GetSessions">ITerminalServer.GetSessions()</see>.
+            </summary>
+            </overloads>
+            <summary>
+            Lists the sessions on a given terminal server. Obsolete; use 
+            <see cref="M:Cassia.ITerminalServer.GetSessions">ITerminalServer.GetSessions()</see>.
+            </summary>
+            <param name="serverName">The name of the terminal server.</param>
+            <returns>A list of sessions on the terminal server.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServicesManager.GetSessions">
+            <summary>
+            Lists the sessions on a given terminal server. Obsolete; use 
+            <see cref="M:Cassia.ITerminalServer.GetSessions">ITerminalServer.GetSessions()</see>.
+            </summary>
+            <returns>A list of sessions on the local server.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServicesManager.GetRemoteServer(System.String)">
+            <summary>
+            Creates a connection to a remote terminal server.
+            </summary>
+            <param name="serverName">The name of the terminal server.</param>
+            <returns>A <see cref="T:Cassia.ITerminalServer"/> instance representing the requested server.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServicesManager.GetLocalServer">
+            <summary>
+            Creates a connection to the local terminal server.
+            </summary>
+            <returns>A <see cref="T:Cassia.ITerminalServer"/> instance representing the local server.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServicesManager.GetServers(System.String)">
+            <summary>
+            Enumerates all terminal servers in a given domain.
+            </summary>
+            <param name="domainName">The name of the domain.</param>
+            <returns>A list of terminal servers in the domain.</returns>
+        </member>
+        <member name="P:Cassia.ITerminalServicesManager.CurrentSession">
+            <summary>
+            Provides information about the session in which the current process is running.
+            </summary>
+        </member>
+        <member name="T:Cassia.ITerminalServicesProcess">
+            <summary>
+            A process running on a terminal server.
+            </summary>
+        </member>
+        <member name="M:Cassia.ITerminalServicesProcess.Kill">
+            <overloads>
+            <summary>
+            Terminates the process.
+            </summary>
+            </overloads>
+            <summary>
+            Terminates the process immediately.
+            </summary>
+        </member>
+        <member name="M:Cassia.ITerminalServicesProcess.Kill(System.Int32)">
+            <summary>
+            Terminates the process with a particular exit code.
+            </summary>
+            <param name="exitCode">The exit code for the process.</param>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.SessionId">
+            <summary>
+            The ID of the terminal session on the server in which the process is running.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.ProcessId">
+            <summary>
+            The ID of the process on the server.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.ProcessName">
+            <summary>
+            The name of the process, e.g. Notepad.exe.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.SecurityIdentifier">
+            <summary>
+            The security identifier under which the process is running.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.Server">
+            <summary>
+            The terminal server on which this process is running.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesProcess.UnderlyingProcess">
+            <summary>
+            Gets a <see cref="T:System.Diagnostics.Process"/> object that represents the process.
+            </summary>
+            <returns>A <see cref="T:System.Diagnostics.Process"/> object.</returns>
+        </member>
+        <member name="T:Cassia.ITerminalServicesSession">
+            <summary>
+            A session on a terminal server.
+            </summary>
+            <remarks>
+            Note that many of the properties exposed by this interface may only be loaded on demand,
+            so ensure that a connection to the terminal server is open 
+            (by calling <see cref="M:Cassia.ITerminalServer.Open"/>) before accessing properties or performing
+            operations on a session.
+            </remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.Logoff">
+            <overloads>
+            <summary>
+            Logs the session off, disconnecting any user that might be attached.
+            </summary>
+            </overloads>
+            <summary>
+            Logs the session off, disconnecting any user that might be attached.
+            </summary>
+            <remarks>The logoff takes place asynchronously; this method returns immediately. 
+            This is the same as calling <c>Logoff(false)</c>.</remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.Logoff(System.Boolean)">
+            <summary>
+            Logs the session off, disconnecting any user that might be attached.
+            </summary>
+            <param name="synchronous">If <c>true</c>, waits until the session is fully logged off 
+            before returning from the method. If <c>false</c>, returns immediately, even though
+            the session may not be completely logged off yet.</param>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.Disconnect">
+            <overloads>
+            <summary>
+            Disconnects any attached user from the session.
+            </summary>
+            </overloads>
+            <summary>
+            Disconnects any attached user from the session.
+            </summary>
+            <remarks>The disconnection takes place asynchronously; this method returns immediately. 
+            This is the same as calling <c>Disconnect(false)</c>.</remarks>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.Disconnect(System.Boolean)">
+            <summary>
+            Disconnects any attached user from the session.
+            </summary>
+            <param name="synchronous">If <c>true</c>, waits until the session is fully disconnected 
+            before returning from the method. If <c>false</c>, returns immediately, even though
+            the session may not be completely disconnected yet.</param>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.MessageBox(System.String)">
+            <overloads>
+            <summary>
+            Displays a message box in the session.
+            </summary>
+            </overloads>
+            <summary>
+            Displays a message box in the session.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String)">
+            <summary>
+            Displays a message box in the session.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="caption">The caption of the message box.</param>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxIcon)">
+            <summary>
+            Displays a message box in the session.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="caption">The caption of the message box.</param>
+            <param name="icon">The icon to display in the message box.</param>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            <summary>
+            Displays a message box in the session and returns the user's response to the message box.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="caption">The caption of the message box.</param>
+            <param name="buttons">The buttons to display in the message box.</param>
+            <param name="icon">The icon to display in the message box.</param>
+            <param name="defaultButton">The button that should be selected by default in the message box.</param>
+            <param name="options">Options for the message box.</param>
+            <param name="timeout">The amount of time to wait for a response from the user 
+            before closing the message box. The system will wait forever if this is set to <c>TimeSpan.Zero</c>.
+            This will be treated as a integer number of seconds --
+            specifying <c>TimeSpan.FromSeconds(2.5)</c> will produce the same result as 
+            <c>TimeSpan.FromSeconds(2)</c>.</param>
+            <param name="synchronous">If <c>true</c>, wait for and return the user's response to the
+            message box. Otherwise, return immediately.</param>
+            <returns>The user's response to the message box. If <paramref name="synchronous"/>
+            is <c>false</c>, the method will always return <see cref="F:Cassia.RemoteMessageBoxResult.Asynchronous"/>.
+            If the timeout expired before the user responded to the message box, the result will be 
+            <see cref="F:Cassia.RemoteMessageBoxResult.Timeout"/>.</returns>
+        </member>
+        <member name="M:Cassia.ITerminalServicesSession.GetProcesses">
+            <summary>
+            Retreives a list of processes running in this session.
+            </summary>
+            <returns>A list of processes.</returns>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ClientName">
+            <summary>
+            The name of the machine last connected to this session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ConnectionState">
+            <summary>
+            The connection state of the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ConnectTime">
+            <summary>
+            The time at which the user connected to this session.
+            </summary>
+            <remarks>
+            May be <c>null</c>, e.g. for a listening session.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.CurrentTime">
+            <summary>
+            The current time in the session.
+            </summary>
+            <remarks>
+            May be <c>null</c>, e.g. for a listening session.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.DisconnectTime">
+            <summary>
+            The time at which the user disconnected from this session.
+            </summary>
+            <remarks>
+            May be <c>null</c>, e.g. if the user has never disconnected from the session.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.LastInputTime">
+            <summary>
+            The time at which this session last received input -- mouse movements, key presses, etc.
+            </summary>
+            <remarks>
+            May be <c>null</c>, e.g. for a listening session that receives no user input.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.LoginTime">
+            <summary>
+            The time at which the user logged into this session for the first time.
+            </summary>
+            <remarks>
+            May be <c>null</c>, e.g. for a listening session.
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.IdleTime">
+            <summary>
+            Time since the session last received user input.
+            </summary>
+            <remarks>This will return <c>TimeSpan.Zero</c> if there is no user connected to the 
+            session, or the user is currently active.</remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.SessionId">
+            <summary>
+            The ID of the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.UserName">
+            <summary>
+            The name of the user account that last connected to the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.DomainName">
+            <summary>
+            The domain of the user account that last connected to the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.UserAccount">
+            <summary>
+            The user account that last connected to the session.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.WindowStationName">
+            <summary>
+            The name of the session's window station.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ClientIPAddress">
+            <summary>
+            The IP address reported by the client.
+            </summary>
+            <remarks>Note that this is not guaranteed to be the client's actual, remote 
+            IP address -- if the client is behind a router with NAT, for example, the IP address
+            reported will be the client's internal IP address on its LAN.</remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.Server">
+            <summary>
+            The terminal server on which this session is located.
+            </summary>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ClientBuildNumber">
+            <summary>
+            The build number of the client.
+            </summary>
+            <remarks>
+            <para>Note that this does not include the major version, minor 
+            version, or revision number -- it is only the build number. For example, the full file version 
+            of the RDP 6 client on Windows XP is 6.0.6001.18000, so this property will return 6001
+            for this client.</para>
+            <para>May be zero, e.g. for a listening session.</para>
+            </remarks>
+        </member>
+        <member name="P:Cassia.ITerminalServicesSession.ClientDisplay">
+            <summary>
+            Information about a client's display.
+            </summary>
+        </member>
+        <member name="T:Cassia.Impl.LazyLoadedProperty`1">
+            <summary>
+            A property that is evaluated lazily.
+            </summary>
+            <typeparam name="T">The type of the property value.</typeparam>
+        </member>
+        <member name="T:Cassia.Impl.LocalServerHandle">
+            <summary>
+            Connection to the local terminal server.
+            </summary>
+        </member>
+        <member name="T:Cassia.NamespaceDoc">
+            <summary>
+            <para>To use Cassia, construct an instance of <see cref="T:Cassia.TerminalServicesManager"/>
+            and then use methods on that class to get information about terminal servers and the sessions
+            and processes running on them.</para>
+            <para>Note that if you are connecting to a remote server, you need to
+            call <see cref="M:Cassia.ITerminalServer.Open"/> before accessing server information, but if you are 
+            connecting to the local server, this is not necessary. For example, to list all sessions 
+            running on a remote server:
+            </para>
+            <code>
+            ITerminalServicesManager manager = new TerminalServicesManager();
+            using (ITerminalServer server = manager.GetRemoteServer("ServerName"))
+            {
+                server.Open();
+                foreach (ITerminalServicesSession session in server.GetSessions())
+                {
+                    Console.WriteLine("Session " + session.SessionId + ": " + session.UserName);
+                }
+            }
+            </code>
+            Another example, this one showing the screen resolution of all clients connected to the local
+            terminal server:
+            <code>
+            ITerminalServicesManager manager = new TerminalServicesManager();
+            using (ITerminalServer server = manager.GetLocalServer())
+            {
+                // Note that server.Open() is not necessary here since we are accessing the 
+                // local terminal server.
+                foreach (ITerminalServicesSession session in server.GetSessions())
+                {
+                    IClientDisplay display = session.ClientDisplay;
+                    if (display != null)
+                    {
+                        Console.WriteLine("Session " + session.SessionId + ": " + display.HorizontalResolution + "x"
+                                          + display.VerticalResolution);
+                    }
+                }
+            }
+            </code>
+            </summary>
+        </member>
+        <member name="T:Cassia.RemoteMessageBoxButtons">
+            <summary>
+            Specifies the combination of buttons that should be displayed in a message box shown with the
+            <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            ITerminalServicesSession.MessageBox</see> method.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.Ok">
+            <summary>
+            Show only an "OK" button. This is the default.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.OkCancel">
+            <summary>
+            Show "OK" and "Cancel" buttons.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.AbortRetryIgnore">
+            <summary>
+            Show "Abort", "Retry", and "Ignore" buttons.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.YesNoCancel">
+            <summary>
+            Show "Yes", "No", and "Cancel" buttons.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.YesNo">
+            <summary>
+            Show "Yes" and "No" buttons.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxButtons.RetryCancel">
+            <summary>
+            Show "Retry" and "Cancel" buttons.
+            </summary>
+        </member>
+        <member name="T:Cassia.RemoteMessageBoxDefaultButton">
+            <summary>
+            Specifies the buttons that should be selected by default in a message box shown with the
+            <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            ITerminalServicesSession.MessageBox</see> method.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxDefaultButton.Button1">
+            <summary>
+            The first button should be selected. This is the default.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxDefaultButton.Button2">
+            <summary>
+            The second button should be selected.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxDefaultButton.Button3">
+            <summary>
+            The third button should be selected.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxDefaultButton.Button4">
+            <summary>
+            The fourth button should be selected.
+            </summary>
+        </member>
+        <member name="T:Cassia.RemoteMessageBoxIcon">
+            <summary>
+            Specifies the icon that should be displayed in a message box shown with the
+            <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            ITerminalServicesSession.MessageBox</see> method.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.None">
+            <summary>
+            Show no icon. This is the default.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Hand">
+            <summary>
+            Show a hand icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Question">
+            <summary>
+            Show a question mark icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Exclamation">
+            <summary>
+            Show an exclamation point icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Asterisk">
+            <summary>
+            Show an informational icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Warning">
+            <summary>
+            Show a warning icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Error">
+            <summary>
+            Show an error icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Information">
+            <summary>
+            Show an informational icon.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxIcon.Stop">
+            <summary>
+            Show a stopsign icon.
+            </summary>
+        </member>
+        <member name="T:Cassia.RemoteMessageBoxOptions">
+            <summary>
+            Specifies additional options for a message box shown with the
+            <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            ITerminalServicesSession.MessageBox</see> method.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxOptions.None">
+            <summary>
+            No additional options. This is the default.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxOptions.RightAligned">
+            <summary>
+            Specifies that the text in the message box should be right-aligned. The default is left-aligned.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxOptions.RtlReading">
+            <summary>
+            Specifies that the message box should use a right-to-left reading order.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxOptions.SetForeground">
+            <summary>
+            Specifies that the message box should be set to the foreground window when displayed.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxOptions.TopMost">
+            <summary>
+            Specifies that the message box should appear above all other windows on the screen.
+            </summary>
+        </member>
+        <member name="T:Cassia.RemoteMessageBoxResult">
+            <summary>
+            Specifies the user's response to a message box shown with the
+            <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)">
+            ITerminalServicesSession.MessageBox</see> method.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Ok">
+            <summary>
+            The user pressed the "OK" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Cancel">
+            <summary>
+            The user pressed the "Cancel" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Abort">
+            <summary>
+            The user pressed the "Abort" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Retry">
+            <summary>
+            The user pressed the "Retry" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Ignore">
+            <summary>
+            The user pressed the "Ignore" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Yes">
+            <summary>
+            The user pressed the "Yes" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.No">
+            <summary>
+            The user pressed the "No" button.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Timeout">
+            <summary>
+            The timeout period expired before the user responded to the message box.
+            </summary>
+        </member>
+        <member name="F:Cassia.RemoteMessageBoxResult.Asynchronous">
+            <summary>
+            The <c>synchronous</c> parameter of <see cref="M:Cassia.ITerminalServicesSession.MessageBox(System.String,System.String,Cassia.RemoteMessageBoxButtons,Cassia.RemoteMessageBoxIcon,Cassia.RemoteMessageBoxDefaultButton,Cassia.RemoteMessageBoxOptions,System.TimeSpan,System.Boolean)"/>
+            was set to false, so the method returned immediately, without waiting for a response
+            from the user.
+            </summary>
+        </member>
+        <member name="T:Cassia.ShutdownType">
+            <summary>
+            The type of terminal server shutdown to perform as specified in a call to
+            <see cref="M:Cassia.ITerminalServer.Shutdown(Cassia.ShutdownType)"/>.
+            </summary>
+        </member>
+        <member name="F:Cassia.ShutdownType.LogoffAllSessions">
+            <summary>
+            Logs off all sessions on the server other than the one calling 
+            <see cref="M:Cassia.ITerminalServer.Shutdown(Cassia.ShutdownType)"/>, preventing any new connections until the server
+            is restarted.
+            </summary>
+        </member>
+        <member name="F:Cassia.ShutdownType.Shutdown">
+            <summary>
+            Shuts down the server without powering it off.
+            </summary>
+        </member>
+        <member name="F:Cassia.ShutdownType.Reboot">
+            <summary>
+            Reboots the server.
+            </summary>
+        </member>
+        <member name="F:Cassia.ShutdownType.PowerOff">
+            <summary>
+            Shuts down and powers off the server.
+            </summary>
+        </member>
+        <member name="F:Cassia.ShutdownType.FastReboot">
+            <summary>
+            This value is not yet supported by Windows.
+            </summary>
+        </member>
+        <member name="T:Cassia.Impl.TerminalServer">
+            <summary>
+            Default implementation of <see cref="T:Cassia.ITerminalServer"/>.
+            </summary>
+        </member>
+        <member name="T:Cassia.Impl.RemoteServerHandle">
+            <summary>
+            Connection to a remote terminal server.
+            </summary>
+        </member>
+        <member name="T:Cassia.TerminalServicesManager">
+            <summary>
+            The main Cassia class, and the only class you should directly construct from your application code.
+            Provides a default implementation of <see cref="T:Cassia.ITerminalServicesManager"/>.
+            </summary>
+        </member>
+        <member name="M:Cassia.TerminalServicesManager.GetSessions(System.String)">
+            <overloads><inheritdoc /></overloads>
+            <inheritdoc />
+        </member>
+        <member name="M:Cassia.TerminalServicesManager.GetSessions">
+            <inheritdoc />
+        </member>
+        <member name="M:Cassia.TerminalServicesManager.GetRemoteServer(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Cassia.TerminalServicesManager.GetLocalServer">
+            <inheritdoc />
+        </member>
+        <member name="M:Cassia.TerminalServicesManager.GetServers(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Cassia.TerminalServicesManager.CurrentSession">
+            <inheritdoc />
+        </member>
+        <member name="T:Cassia.Impl.TerminalServicesProcess">
+            <summary>
+            Default implementation of <see cref="T:Cassia.ITerminalServicesProcess"/>.
+            </summary>
+        </member>
+        <member name="T:Cassia.Impl.TerminalServicesSession">
+            <summary>
+            Default implementation of <see cref="T:Cassia.ITerminalServicesSession"/>.
+            </summary>
+        </member>
+    </members>
+</doc>
