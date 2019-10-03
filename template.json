@@ -204,7 +204,7 @@
             "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
             "auth:AdminUserGroup": "",
             "ida:AADInstance": "https://login.microsoftonline.com/",
-            "cfg:DefaultTenantGuid": "..........",
+            "cfg:DefaultTenantGuid": "1AF04A50-3F2F-420A-93B8-2D2A1EFF6CF1",
             "ida:ClientId": "..........",
             "ida:ClientSecret": "........",
             "ida:Domain": "..........",
