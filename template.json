@@ -66,6 +66,18 @@
       ]
     },
     {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2015-05-01-preview",
+      "name": "[concat(parameters('siteName'), '/AllowAllWindowsAzureIps')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', parameters('siteName'))]"
+      ],
+      "properties": {
+          "startIpAddress": "0.0.0.0",
+          "endIpAddress": "0.0.0.0"
+      }
+    },
+    {
       "apiVersion": "2017-03-15-preview",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.OperationalInsights/workspaces",
