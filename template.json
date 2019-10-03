@@ -223,6 +223,10 @@
             "DbContext": {
               "value": "[variables('connectionString')]",
               "type": "SQLAzure"
+            },
+            "ScContext": {
+              "value": "[variables('connectionString')]",
+              "type": "SQLAzure"
             }
           },
           "dependsOn": [
