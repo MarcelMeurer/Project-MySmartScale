@@ -66,6 +66,17 @@
       ]
     },
     {
+      "apiVersion": "2017-04-26-preview",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "location": "[resourceGroup().location]",
+      
+      "properties": {
+        "sku": { "Name": "Standalone" },
+        "retentionInDays": 90
+      }   
+    },
+    {
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2016-09-01",
       "name": "[parameters('siteName')]",
@@ -86,7 +97,8 @@
           "targetWorkerSizeId": 0
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName'))]"
       ]
     },
     {
