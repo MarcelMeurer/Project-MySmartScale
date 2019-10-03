@@ -66,13 +66,13 @@
       ]
     },
     {
-      "apiVersion": "2017-04-26-preview",
+      "apiVersion": "2017-03-15-preview",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.OperationalInsights/workspaces",
       "location": "[resourceGroup().location]",
       
       "properties": {
-        "sku": { "Name": "Standalone" },
+        "sku": { "Name": "PerGB2018" },
         "retentionInDays": 90
       }   
     },
@@ -150,9 +150,9 @@
             "ida:Domain": "..........",
             "ida:TenantId": "..........",
             "LicenseKey":"",
-            "AzureMonitor-Key": "",
+            "AzureMonitor-Key": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName')),'2015-11-01-preview').primarySharedKey]",
             "AzureMonitor-LogTypeName": "MySmartScale",
-            "AzureMonitor-Workspace": "",
+            "AzureMonitor-Workspace": "[reference(resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName'))).customerId]",
             "PROJECT": "bin/Endpoint"
           }, 
           "dependsOn": [
