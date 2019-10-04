@@ -197,7 +197,8 @@
       ],
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
-        "[resourceId('Microsoft.Insights/components', parameters('siteName'))]"
+        "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
+		"[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
       ]
     }
   ]
