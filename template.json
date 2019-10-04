@@ -197,10 +197,10 @@
           "siteConfig":{
             "alwaysOn":true,
             "use32BitWorkerProcess":false,
-            "appSettings":{
-              "testmmmmmm":"hhahahahahahaah",
-              "test111111":"99999999"
-            }
+            "appSettings":[
+              {"testmmmmmm":"hhahahahahahaah"},
+              {"test111111":"99999999"}
+            ]
           }
       },
       "resources": [
