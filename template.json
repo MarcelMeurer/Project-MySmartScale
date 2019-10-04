@@ -142,7 +142,7 @@
             "ida:Domain": "<OPTIONAL: Enter the id of your Azure AD tenant>",
             "ida:TenantId": "<OPTIONAL: Enter the id of your Azure AD tenant>",
             "LicenseKey":"",
-            "AzureMonitor-Key": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('siteName')), '2015-03-20').primarySharedKey]",
+            "AzureMonitor-Key": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('siteName')), '2015-03-20').primarySharedKey]",
             "AzureMonitor-LogTypeName": "MySmartScale",
             "AzureMonitor-Workspace": "[reference(resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName'))).customerId]",
             "PROJECT": "bin/Endpoint"
