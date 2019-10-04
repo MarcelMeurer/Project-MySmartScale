@@ -175,7 +175,8 @@
             "IsManualIntegration": true
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]",
+            "[resourceId('Microsoft.Web/appsettings',concat(parameters('siteName'),'-data'))]"
           ]
         }
       ],
@@ -247,7 +248,8 @@
             "IsManualIntegration": true
           },
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]",
+            "[resourceId('Microsoft.Web/appsettings',concat(parameters('siteName'),'-portal'))]"
           ]
         }
       ],
