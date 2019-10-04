@@ -254,7 +254,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
-        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]",
+        "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
       ]
     }
   ]
