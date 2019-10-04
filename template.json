@@ -3,35 +3,15 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
-      "defaultValue": "a-unique-hostname",
-      "type": "string"
-    },
-    "Workspace_Id": {
-      "defaultValue": "Enter your LogAnalytics workspace id here (or later in AppSettings)",
-      "type": "string"
-    },
-    "Workspace_Key": {
-      "defaultValue": "Enter your LogAnalytics workspace key here (or later in AppSettings)",
-      "type": "string"
-    },
-    "LogType": {
-      "defaultValue": "IoTData",
-      "type": "string"
-    },
-    "TimeField": {
-      "defaultValue": "TimeStamp",
+      "defaultValue": "Enter a unique hostname for SQL, Web Server and Log Analytics ",
       "type": "string"
     },
     "SqlPassword": {
       "defaultValue": "AsuperSecretPasswordForThe@DataBas1!",
-      "type": "string"
+      "type": "securestring"
     }
   },
   "variables": {
-    "subscriptionId": "[subscription().subscriptionId]",
-    "resourcegroupName": "[resourceGroup().name]",
-    "serverfarmsName": "ServerFarmPlan",
-    "storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]",
     "connectionString" : "[concat('Server=tcp:',parameters('siteName'),'.database.windows.net,1433;Initial Catalog=MySmartScale;Persist Security Info=False;User ID=dbadmin;Password=',parameters('SqlPassword'),';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=90;')]"
   },
   "resources": [
