@@ -198,8 +198,10 @@
             "alwaysOn":true,
             "use32BitWorkerProcess":false,
             "appSettings": [
-              {"testmmmmmm":"hhahahahahahaah"},
-              {"test111111":"99999999"}
+              {"name":"hhahahahahahaah",
+               "value":"99999999"},
+              {"name":"hhahahahah2222222ahaah",
+               "value":"992229"}
             ]
           }
       },
