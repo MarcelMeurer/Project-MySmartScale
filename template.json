@@ -222,6 +222,21 @@
             ]
           }
       },
+      "resources":[
+         {
+          "name": "web",
+          "type": "sourcecontrols",
+          "apiVersion": "2016-08-01",
+          "properties":{
+            "RepoUrl": "https://github.com/MarcelMeurer/Project-MySmartScale.git",
+            "branch": "master",
+            "IsManualIntegration": true
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-portal'))]"
+          ]
+        }
+      ],
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
