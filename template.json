@@ -187,7 +187,7 @@
   },
   {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2016-08-01",
       "name": "[concat(parameters('siteName'),'-portal')]",
       "location": "[resourceGroup().location]",
       "kind": "app",
