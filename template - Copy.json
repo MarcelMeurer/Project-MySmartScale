@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
@@ -187,7 +187,7 @@
   },
   {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2016-08-01",
       "name": "[concat(parameters('siteName'),'-portal')]",
       "location": "[resourceGroup().location]",
       "kind": "app",
@@ -254,7 +254,8 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
-        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]"
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('siteName'), 'MySmartScale')]",
+        "[resourceId('Microsoft.Web/sites', concat(parameters('siteName'),'-data'))]"
       ]
     }
   ]
