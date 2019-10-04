@@ -198,14 +198,30 @@
             "alwaysOn":true,
             "use32BitWorkerProcess":false,
             "appSettings": [
-              {"name":"hhahahahahahaah",
-               "value":"99999999"},
-              {"name":"hhahahahah2222222ahaah",
-               "value":"992229"}
+              {"name":"APPINSIGHTS_INSTRUMENTATIONKEY","value":"[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]"},
+              {"name":"auth:AdminUserGroup","value":"*"},
+              {"name":"ida:AADInstance","value":"https://login.microsoftonline.com/"},
+              {"name":"cfg:DefaultTenantGuid","value":"1AF04A50-3F2F-420A-93B8-2D2A1EFF6CF1"},
+              {"name":"ida:ClientId","value":"<Enter the client id of your service principal>"},
+              {"name":"ida:ClientSecret","value":"<Enter the client secret of your service principal>"},
+              {"name":"ida:Domain","value":"<Enter the id of your Azure AD tenant>"},
+              {"name":"ida:TenantId","value":"<Enter the id of your Azure AD tenant>"},
+              {"name":"PROJECT","value":"bin/Administration"}
+            ],
+            "connectionStrings": [
+              {
+                "name": "DbContext",
+                "connectionString": "[variables('connectionString')]",
+                "type": "SQLAzure"
+              },
+              {
+                "name": "ScContext",
+                "connectionString": "[variables('connectionString')]",
+                "type": "SQLAzure"
+              }
             ]
           }
       },
-
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('siteName'))]",
         "[resourceId('Microsoft.Insights/components', parameters('siteName'))]",
