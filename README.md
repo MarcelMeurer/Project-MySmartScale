@@ -19,7 +19,7 @@ This project gives an answers to a very important challenge regarding Windows Vi
 
 Project MySmartScale starts and smartly deallocates session hosts. It learns about the user’s behavior and actively logoffs sessions at the right time to save compute power – and money. This solution is 100% based on Azure platform services. 
 
-## Some highlights:
+### Some highlights:
 
 **Allocate session hosts before they are needed**
 
@@ -44,7 +44,7 @@ Project MySmartScale starts and smartly deallocates session hosts. It learns abo
 - For a shared/pooled session host environment at the moment 
 - Realistic savings: 60-70% (savings!) in a shared environment for a normal 10 business hours a day      company with no shifts regarding 24/7 runtime of the session hosts
 
-## Installation
+## Installation and Configuration
 
 ### Azure services
 
@@ -60,6 +60,12 @@ The following Azure resources are deployed:
   - -data as the data endpoint
   - -portal website for configuration
 - some other resources supporting the deployment
+
+#### Create the Azure AD service principals
+
+#### Configure the Azure resources with the service principals
+
+Starte the Project MySmartScale portal and configure the basics
 
 ### Worker Agent
 
