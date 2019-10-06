@@ -972,12 +972,12 @@ var SiteCollectionTileComponent = /** @class */ (function () {
                         note = "\nThis Site Collection is not managed.";
                     }
                     note += "\nLast updated on local time: " + _this.siteStatistics.LastSessionDataLocal;
-                    var minutesMaxBack = new Date(Date.now());
+                    var minutesMaxBack = new Date();
                     minutesMaxBack.setMinutes(minutesMaxBack.getMinutes() - 3);
-                    note += "\nLast updated on local time: " + minutesMaxBack;
-                    if (_this.siteStatistics.LastSessionDataUtc < minutesMaxBack) {
+                    var tmpDateTime = new Date(_this.siteStatistics.LastSessionDataUtc);
+                    var utcLastSessionDataDateTime = Date.UTC(tmpDateTime.getFullYear(), tmpDateTime.getMonth(), tmpDateTime.getDate(), tmpDateTime.getHours(), tmpDateTime.getMinutes());
+                    if (new Date(utcLastSessionDataDateTime) < minutesMaxBack) {
                         _this.isOlder = true;
-                        note += "\nData lacks.";
                     }
                     else {
                         _this.isOlder = false;
