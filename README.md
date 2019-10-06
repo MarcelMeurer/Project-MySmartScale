@@ -15,7 +15,7 @@ This repo provides the community version of "Project MySmartScale". The communit
 
 ## What is Project MySmartScale
 
-This project gives an answers to a very important challenge regarding Windows Virtual Desktop: In a cloud environment, virtual machines are paid based on “switched on” time – even if the resources are not in use. Managing the execution of session hosts is crucial for resource-efficient IT.
+This project gives an answers to a very important challenge regarding Windows Virtual Desktop or Citrix Virtual Apps and Desktops in Azure: In a cloud environment, virtual machines are paid based on “switched on” time – even if the resources are not in use. Managing the execution of session hosts is crucial for resource-efficient IT.
 
 Project MySmartScale starts and smartly deallocates session hosts. It learns about the user’s behavior and actively logoffs sessions at the right time to save compute power – and money. This solution is 100% based on Azure platform services. 
 
