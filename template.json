@@ -121,7 +121,7 @@
             "use32BitWorkerProcess":false,
             "appSettings": [
               {"name":"APPINSIGHTS_INSTRUMENTATIONKEY","value":"[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]"},
-              {"name":"AzureControl-ConsolidateSessionDataLastCompleteTimeInMinutes","value":"0"},
+              {"name":"AzureControl-ConsolidateSessionDataLastCompleteTimeInMinutes","value":"1"},
               {"name":"AzureControl-DefaultTimeouForAzureAccesstInSeconds","value":"30"},
               {"name":"AzureControl-PowerStateChangeInAzureTimeoutInSeconds","value":"180"},
               {"name":"AzureControl-PowerStateUpdateToOldInHours","value":"8"},
