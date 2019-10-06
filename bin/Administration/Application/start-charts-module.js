@@ -972,7 +972,7 @@ var SiteCollectionTileComponent = /** @class */ (function () {
                         note = "\nThis Site Collection is not managed.";
                     }
                     note += "\nLast updated on local time: " + _this.siteStatistics.LastSessionDataLocal;
-                    var minutesMaxBack = new Date();
+                    var minutesMaxBack = new Date(Date.now());
                     minutesMaxBack.setMinutes(minutesMaxBack.getMinutes() - 3);
                     note += "\nLast updated on local time: " + minutesMaxBack;
                     if (_this.siteStatistics.LastSessionDataUtc < minutesMaxBack) {
