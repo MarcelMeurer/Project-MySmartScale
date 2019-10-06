@@ -44,7 +44,7 @@ Project MySmartScale gets information from the session host called workers. The 
 
 Project MySmartScale based on Azure platform services:
 
-![](D:\DEV\GitHub\Project-MySmartScale\media\Architecture.png)
+![](media/Architecture.png)
 
 ## Installation and configuration
 
@@ -83,33 +83,33 @@ Certificate and secrets: Client Secrets -> New client secret
 
 And copy the key for later (in my case: Rxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
 
-![CreateSP-Portal-03](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-03.png)
+![CreateSP-Portal-03](media/CreateSP-Portal-03.png)
 
-![CreateSP-Portal-04](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-04.png)
+![CreateSP-Portal-04](media/CreateSP-Portal-04.png)
 
 Add permission for the application to read the users profile and group membership.
 Add a permission -> Type: Application -> Graph API -> User.Read.All
 
-![CreateSP-Portal-05](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-05.png)
+![CreateSP-Portal-05](media/CreateSP-Portal-05.png)
 
 After this an admin has to consent to that permission:
 
-![CreateSP-Portal-06](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-06.png)
+![CreateSP-Portal-06](media/CreateSP-Portal-06.png)
 
 Edit the manifest of the service principal (to allow reading usergroups). Change "groupMembershipClaims" to "SecurityGroup":
 
-![CreateSP-Portal-07](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-07.png)
+![CreateSP-Portal-07](media/CreateSP-Portal-07.png)
 
 Copy from overview:
 Application (client) ID:	760890f4-da87-4654-b235-xxxxxxxxxxxx
 Directory (tenant) ID: 	1dd9bdbf-f4ac-4244-9415-xxxxxxxxxxxx
 
-![CreateSP-Portal-08](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-08.png)
+![CreateSP-Portal-08](media/CreateSP-Portal-08.png)
 
 Finally go to the Service principal and change callback URI to your deployment Uri / name. In my case:
 https://**wvd-mysmartscale-portal**.azurewebsites.net/.auth/login/aad/callback
 
-![CreateSP-Portal-01](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-01.png)
+![CreateSP-Portal-01](media/CreateSP-Portal-01.png)
 
 ##### Automation account for the VMs
 
@@ -124,9 +124,9 @@ Go to Certificates & secrets -> New client secret -> type a name and select the 
 Press “Add” and copy the key for later.
 Bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-![CreateSP-VmStartStop-01](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-VmStartStop-01.png)
+![CreateSP-VmStartStop-01](media/CreateSP-VmStartStop-01.png)
 
-![CreateSP-VmStartStop-02](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-VmStartStop-02.png)
+![CreateSP-VmStartStop-02](media/CreateSP-VmStartStop-02.png)
 
 From the overview copy:
 
@@ -139,7 +139,7 @@ Role: Virtual Machine Contributor
 Select: Name of the service principal
 Click -> Save
 
-![CreateSP-VmStartStop-03](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-VmStartStop-03.png)
+![CreateSP-VmStartStop-03](media/CreateSP-VmStartStop-03.png)
 
 #### Configure the Azure resources with the service principals
 
@@ -154,11 +154,11 @@ Enter the data from the portal service principal into the portal configuration. 
 
 Press save:
 
-![CreateSP-Portal-09](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Portal-09.png)
+![CreateSP-Portal-09](media/CreateSP-Portal-09.png)
 
 Important and recommend: Configure the security for the portal: Add a group id containing the administrators to allow login. If you don't do this: Everybody in your Azure AD **can logon and read the client secret** for the automation account.
 
-![CreateSP-Data-AdminGroup](D:\DEV\GitHub\Project-MySmartScale\media\CreateSP-Data-AdminGroup.png)
+![CreateSP-Data-AdminGroup](media/CreateSP-Data-AdminGroup.png)
 
 ##### Basic configuration in the portal
 
@@ -170,7 +170,7 @@ Login and go to configuration.
 
 Enter the service principal data from your automaton sp:
 
-![MSS-Portal-01](D:\DEV\GitHub\Project-MySmartScale\media\MSS-Portal-01.png)
+![MSS-Portal-01](media/MSS-Portal-01.png)
 
 Additionally: Generate a secret passphrase (without quotes) and add it into the key field: Don't use the generated passphrase. This passphrase is later for the configuration of the agent.
 
