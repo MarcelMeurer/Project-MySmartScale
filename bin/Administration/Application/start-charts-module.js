@@ -976,6 +976,7 @@ var SiteCollectionTileComponent = /** @class */ (function () {
                     minutesMaxBack.setMinutes(minutesMaxBack.getMinutes() - 3);
                     if (_this.siteStatistics.LastSessionDataUtc < minutesMaxBack) {
                         _this.isOlder = true;
+                        note += "\nData lacks.";
                     }
                     else {
                         _this.isOlder = false;
