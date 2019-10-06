@@ -974,6 +974,7 @@ var SiteCollectionTileComponent = /** @class */ (function () {
                     note += "\nLast updated on local time: " + _this.siteStatistics.LastSessionDataLocal;
                     var minutesMaxBack = new Date();
                     minutesMaxBack.setMinutes(minutesMaxBack.getMinutes() - 3);
+                    note += "\nLast updated on local time: " + minutesMaxBack;
                     if (_this.siteStatistics.LastSessionDataUtc < minutesMaxBack) {
                         _this.isOlder = true;
                         note += "\nData lacks.";
