@@ -1,14 +1,3 @@
-# Deploy to Azure
-
- <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMarcelMeurer%2FProject-MySmartScale%2Fmaster%2Ftemplate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-
-
-
-
- <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMarcelMeurer%2FProject-MySmartScale%2Fmaster%2Ftemplate.test.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-
-
-
 # Project MySmartScale - Community version
 
 This repo provides the community version of "Project MySmartScale". The community version manages up to five workers. This version is as-it-is without support. For a supported version with more then five managed workers contact my employer (sales@sepago.de).
@@ -73,6 +62,8 @@ The following Azure resources are deployed:
   - -data as the data endpoint
   - -portal website for configuration
 - some other resources supporting the deployment
+
+ <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMarcelMeurer%2FProject-MySmartScale%2Fmaster%2Ftemplate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/>
 
 #### Create the Azure AD service principals
 
@@ -221,4 +212,10 @@ Check, if you can see the data from your worker
 
 
 ---> under construction. The documentation is in progress.....
+
+
+
+## Deploy to Azure
+
+ <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMarcelMeurer%2FProject-MySmartScale%2Fmaster%2Ftemplate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
