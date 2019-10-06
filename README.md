@@ -77,7 +77,7 @@ Configure the service principal:
 
 Set checkbox “ID tokens” and save:
 
-![CreateSP-Portal-02](.\media\CreateSP-Portal-02.png)
+![CreateSP-Portal-02](.media\CreateSP-Portal-02.png)
 
 Certificate and secrets: Client Secrets -> New client secret
 
