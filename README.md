@@ -42,6 +42,8 @@ Project MySmartScale starts and smartly deallocates session hosts. It learns abo
 
 Project MySmartScale gets information from the session host called workers. The data include information about connected and disconnected sessions, the load of the worker and some other information. This data are summarized by the ControlUnit which  starts and deallocate workers fitted to the current and expected usage of the environment. If the ControlUnit runs over a long time the CU can predict the session count for the next time and can pre-start the worker. With this prediction method, you have the right count of workers running if the users try to logon (to handle a "logon storm").
 
+All scaling activities are on a per host pool / delivery group base.
+
 Project MySmartScale based on Azure platform services:
 
 ![](media/Architecture.png)
