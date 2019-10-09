@@ -195,25 +195,158 @@ Set the EndPoint-URI to the Uri of your **-data** web app appendet with /data: h
 
 Set the EndPoint-Key to the value you have configured in the configuration (see above).
 
-### Configuration in the portal
+### Admin portal
 
-Check, if you can see the data from your worker
+Go to the admin portal and login with your account which is in the admin group you defined above (auth:AdminUserGroup).
+
+The portal Uri is (use your deployment name): https://**wvd-mysmartscale-portal**.azurewebsites.net in my case.
+
+Check, if you can see data from your worker on the Dashboard menu.
+
+![Dashboard-01](media/Dashboard-01.png)
+
+You should see the host pool name and the number of workers sending data. In the last line, you can read that this host pool (site collection) is not managed. This means that no scaling configuration for this host pool exists. Copy the full host pool name. In my case "ITProCloud-RDS-Tenant.HP-ITProCloud-Shared-01".
+
+Hint: The host pool name contains the tenant name. If you use Project MySmartScale with Citrix IaaS in Azure it contains the Citrix site name. Host pool name and site collection are equivalent names.
 
 #### Add a new site for autoscaling the VMs
 
+Go to configuration and click on "Add new site".
+
+Enter the full name of your host pool / site collection - or paste the previously copied string ("ITProCloud-RDS-Tenant.HP-ITProCloud-Shared-01"). This will create a scale configuration for your host pool.
+
+All scaling configurations are applied per host pool. Click your host pool and continue configuring.
+
 ##### Configure ScaleParameter
+
+Scale parameters are the main configuration for your host pool. The most importanted configurations are:
+
+**Average sessions per worker**
+
+The average amount of session a worker in your host pool can handle
+
+**Average start-up time in minutes**
+
+Time in minutes a worker takes to start from a deallocated mode into a running state (including domain connectivities). This time is used by the starting process.
+
+**Minimum worker count**
+
+The number of workers are running full time (a least two for reliability). A few workers need to run the full time. This is important to handle unexpected logon request and to start up more workers based on requests).
+
+Additional configurations (if you start, use the default values):
+
+| Option                                                       | Description                                                  | Range  | Default |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------ | ------- |
+| Security serve in %                                          | Percent of spare in percent                                  | 0..1   | 0       |
+| Logon prediction based on n weeks                            | Prediction based of the last n weeks                         | 0..8   | 3       |
+| Logon prediction based on n days                             | Prediction based of the last n days (if weeks couldn't applied) | 0..7   | 3       |
+| Logon acceleration based on the last n minutes               | Calculate the logon acceleration from the last n minutes to now | 0..5   | 1       |
+| Start scale-down process only if n scale-down commands in a row | Scale down starts after repeating a scale down command n-times in a row | 0..10  | 3       |
+| Send scale-down command after n minutes of no new connections | Send scale-down command after n minutes of no new connections | 0..60  | 3       |
+| Send scale-down command after n minutes if the connection count stays constant | Send scale-down command after n minutes if the connection count stays constant | 0..60  | 2       |
+| Send scale-down command if the count of disconnected/connected sessions greater then | Send scale-down command if the count of disconnected/connected sessions greater then | 0..1   | 0.4     |
+| Average compute costs per worker per hour                    | Average compute costs per worker per hour in this site collection | float  | 1.01    |
+| Currency string                                              | Currency string                                              | string | $       |
+
+Hint: If you set both "Logon prediction based on ..." to 0 no prediction based on historical data is made.
 
 ##### Configure active logoff conditions
 
+Active logoff conditions allow the configuration of logging of the disconnected session after a defined time. In contrast to the configuration via group policies, the times can be precisely defined in steps of 5 minutes based on the day of the week. Specifying active logoff conditions **is important** to faster logoff users and deallocate the workers (**only** workers **without** sessions are deallocated). 
+
+- Open active logoff conditions and add a new configuration by clicking "+"
+- Set the time after a disconnected session will be logged of entering the value into "Logoff Disconnected session after n minutes"
+- Select a specific weekday from the list and the valid time frame
+- While you can have multiple active logoff conditions (which can have overlapping time frames) enter a priority. 0 has the highest priority
+
+![ActiveLogoff-01](media/ActiveLogoff-01.png)
+
+A best practice:
+
+Allowing disconnected sessions for 3 hours at the main working hours while the rest of the week disconnected sessions are logged off after 60 minutes. Main ours are: Mo-Fr between 06:00 am and 08:00 pm. Configure the following conditions:
+
+- 180 minutes for all days (00:00 am to 12:00 pm) with priority 1
+- 60 minutes for Saturday (00:00 am to 12:00 pm) with priority 0
+- 60 minutes for Sunday (00:00 am to 12:00 pm) with priority 0
+- 60 minutes for all days (00:00 am to 06:00 am) with priority 0
+- 60 minutes for all days (08:00 pm to 12:00 pm) with priority 0
+
 ##### Configure schedules
 
-##### Configure allways off conditions
+Schedules are used to define timeframes where a specific amount of workers should be running at least. For example: With schedules, you can define that a number of n workers have to be running from 6:00 am to 9:00 am to handle the logon storm in the morning. Please do this if you start using MySmartScale or virtual desktop. If you start from scratch the ControlUnit has no data to predict logon storms. Do the same when you go into production from a pilot and the number of connections will increase significantly (and not predictably for the system). 
 
+Schedules only define a baseline.Upscaling will be done by the ControlUnit based on acceleration and count of sessions.
 
+Schedules could be removed in the normal operation mode.
 
+- Open schedules and add a new one by clicking "+"
+- Set the number of workers should be running at least
+- Select a specific weekday from the list and the valid time frame
+- While you can have multiple schedules (which can have overlapping time frames) enter a priority. 0 has the highest priority
 
+![Schedules-01](media/Schedules-01.png)
 
----> under construction. The documentation is in progress.....
+Example:
+
+If you start with windows virtual desktop set the number off running workers between 6:00 am and 9:00 am to 10 on all days except on the weekend. Configure the following schedules:
+
+- 10 workers all days (06:00 am to 09:00 am) with priority 1
+- 2 workers all Saturday (00:00 am to 12:00 pm) with priority 0
+- 2 workers all Sunday (00:00 am to 12:00 pm) with priority 0
+
+##### Configure always off conditions
+
+Always off conditions allow you to define a time frame where all workers are deallocated. This can save more money but has a big disadvantage: Nobody can log in to your environment at this time frame. So be aware and handle with care.
+
+The configuration is comparable to adding schedules.
+
+![ActiveLogoff-01](media/ActiveLogoff-01.png)
+
+## Updates
+
+This repo will be frequently updated to provide new features and maybe bug fixes. Updating your environment to the latest version is very easy:
+
+### Agent update
+
+Copy the files from the bin/WorkerAgent path and overwrite the existing files in your previous deployment on your master image - except the config file (If not otherwise specified).
+
+### ControlUnit and administration portal
+
+You can update the ControlUnit and administration portal by clicking  "Sync" at both web apps (-data and -portal). Go to each web app and click Deployment Center -> Sync
+
+Important: Always update both web app one after the other.
+
+![WebApp-Update](media/WebApp-Update.png)
+
+## FAQ
+
+### Does the ControlUnit scale up new workers directly or is ther a delay?
+
+The start of new workers takes place directly after the calculation of the number of new workers that will be needed. The current workload, logon acceleration and historical values serve as the basis. By consolidating the data of the individual workers every minute, the start is somewhat delayed. After the system has learned the workload over time, the workers are pre-started correctly. 
+
+To ensure that scaling is successful starting with MySmartScale (without historical data)  it is advisable to set a schedule for the main logon time (e.g. from 6 to 10 a.m.) for the first weeks.
+
+### What data are stored into the data table?
+
+- Session data like active and inactive sessions for each worker
+- Session data like active and inactive sessions for each site collection / host pool
+- The configuration including the service principal and key for managing the worker / Azure VMs
+- Statistics to logon/logoff time per user (you can pseudonymize the name by editing the configuration files of the worker agent)
+- Management data for running the web app
+
+### I notice that some data from the workers is not displayed/arrived synchronously. What can I do about it?
+
+The workers should transfer their data regularly at the beginning of a new minute. Depending on time synchronization, transmission path, and database usage, this may delayed. By adjusting the waiting time before further processing, this effect can be prevented (causing the engine to react more slowly). The wait time can be increased from 0 to 1 at the web app running the ControlUnit (-data). Configuration item: *AzureControl-ConsolidateSessionDataLastCompleteTimeInMinutes*
+
+### When are configuration changes applied?
+
+Changes are applied at regular intervals. Max. every 5 minutes by default. This value can be changed at the web app running the ControlUnit (-data). Configuration item: *AzureControl-RefreshConfigurationEachMinutes*
+
+### When does the system shutdown a worker?
+
+The ControlUnit shut down workers if (based on the rules) are more workers online then needed. The number of needed workers is calculated by the expected number of sessions divides by the number of sessions a worker can handle on average.
+
+Are there too many workers running the ControlUnit deallocates workers **without** **connections** - even disconnected sessions. Specify "Active logoff conditions" to speed up clearing workers from connections.
 
 
 
