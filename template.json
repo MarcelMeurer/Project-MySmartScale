@@ -110,7 +110,7 @@
       "type": "Microsoft.Web/sites",
       "apiVersion": "2018-02-01",
       "name": "[concat(parameters('siteName'),'-data')]",
-      "location": "West Europe",
+      "location": "[resourceGroup().location]",
       "kind": "app",
       "properties": {
           "enabled": true,
