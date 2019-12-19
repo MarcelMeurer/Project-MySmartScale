@@ -98,7 +98,7 @@ After this an admin has to consent to that permission:
 
 ![CreateSP-Portal-06](media/CreateSP-Portal-06.png)
 
-Edit the manifest of the service principal (to allow reading usergroups). Change "groupMembershipClaims" to "SecurityGroup":
+Edit the manifest of the service principal (to allow reading usergroups). Change the null value on "groupMembershipClaims" to "SecurityGroup":
 
 ![CreateSP-Portal-07](media/CreateSP-Portal-07.png)
 
@@ -194,6 +194,18 @@ Configure the agent by editing ITPC-MySmartScale-Agent.exe.config
 Set the EndPoint-URI to the Uri of your **-data** web app appendet with /data: https://**wvd-mysmartscale-data**.azurewebsites.net/data
 
 Set the EndPoint-Key to the value you have configured in the configuration (see above).
+
+
+The Worker Agent needs to be running on every online worker for MySmartScale manageability.
+
+- Create a scheduled task called "ITPC-MySmartScale Agent"
+- General - Run the task as user NT Authority/SYSTEM
+- General - Run wherether user is logged on or not and Run with highest priviliges.
+- Triggers -Start the task at system startup
+- Action - Start a program: E.g: "C:\Program Files\WorkerAgent\ITPC-MySmartScale-Agent.exe"
+- Press OK to save and Close
+
+
 
 ### Admin portal
 
