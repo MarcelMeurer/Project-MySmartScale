@@ -195,17 +195,13 @@ Set the EndPoint-URI to the Uri of your **-data** web app appendet with /data: h
 
 Set the EndPoint-Key to the value you have configured in the configuration (see above).
 
+To install the agent, open an administrative command prompt and navigate to the agent (C:\Program Files\SmartScaleAgent ). Type the following line to install the agent:
 
-The Worker Agent needs to be running on every online worker for MySmartScale manageability.
+```cmd
+ITPC-MySmartScale-Agent.exe -install
+```
 
-- Create a scheduled task called "ITPC-MySmartScale Agent"
-- General - Run the task as user NT Authority/SYSTEM
-- General - Run wherether user is logged on or not and Run with highest priviliges.
-- Triggers -Start the task at system startup
-- Action - Start a program: E.g: "C:\Program Files\WorkerAgent\ITPC-MySmartScale-Agent.exe"
-- Press OK to save and Close
-
-
+This installs the agent as a scheduled task, which starts with the boot of the worker. The agent starts with the next boot of the worker.
 
 ### Admin portal
 
