@@ -137,7 +137,7 @@
               {"name":"AzureControl-ConsolidateSessionDataLastCompleteTimeInMinutes","value":"0"},
               {"name":"AzureControl-DefaultTimeouForAzureAccesstInSeconds","value":"30"},
               {"name":"AzureControl-PowerStateChangeInAzureTimeoutInSeconds","value":"180"},
-              {"name":"AzureControl-PowerStateUpdateToOldInHours","value":"8"},
+              {"name":"AzureControl-PowerStateUpdateToOldInHours","value":"2"},
               {"name":"AzureControl-RefreshConfigurationEachMinutes","value":"5"},
               {"name":"AzureControl-RetryCount","value":"99"},
               {"name":"AzureControl-SessionTimeBackValidInMinutes","value":"15"},
