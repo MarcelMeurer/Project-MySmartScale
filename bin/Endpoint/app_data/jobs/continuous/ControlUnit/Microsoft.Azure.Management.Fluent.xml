@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Management.Fluent</name>
+    </assembly>
+    <members>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.SubscriptionId">
+            <returns>the currently selected subscription ID this client is authenticated to work with</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Fluent.Azure.GetCurrentSubscription">
+            <returns>the currently selected subscription this client is authenticated to work with</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.ManagementLocks">
+            <returns>entry point to manage locks</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.ResourceGroups">
+            <returns>entry point to manage resource groups</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.StorageAccounts">
+            <returns>entry point to manage storage accounts</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.VirtualMachines">
+            <returns>entry point to manage virtual machines</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.VirtualMachineScaleSets">
+            <returns>entry point to manage virtual machine scale sets</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.Networks">
+            <returns>entry point to manage virtual networks</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.NetworkSecurityGroups">
+            <returns>entry point to manage network security groups</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.PublicIPAddresses">
+            <returns>entry point to manage public IP addresses</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.NetworkInterfaces">
+            <returns>entry point to manage network interfaces</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.PrivateLinkServices">
+            <returns>entry point to manage private link services</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.AzureFirewalls">
+            <returns>entry point to manage Azure firewalls</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.RouteTables">
+            <returns>entry point to manage route tables</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.LoadBalancers">
+            <returns>entry point to manage virtual load balancers</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.ApplicationGateways">
+            <returns>entry point to manage application gateways</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.NetworkWatchers">
+            <returns>entry point to manage network watchers</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.VirtualNetworkGateways">
+            <returns>entry point to manage Azure Virtual Network Gateways</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.LocalNetworkGateways">
+            <returns>entry point to manage Azure Local Network Gateways</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.ExpressRouteCircuits">
+            <returns>entry point to manage Azure Express Route Circuits</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.ApplicationSecurityGroups">
+            <returns>entry point to manage Application Security Gropus</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.RouteFilters">
+            <returns>entry point to manage Route Filters</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.DdosProtectionPlans">
+            <returns>entry point to manage DDoS protection plans</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.Deployments">
+            <returns>entry point to manage deployments</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.PolicyAssignments">
+            <returns>entry point to manage policy assignments</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.PolicyDefinitions">
+            <returns>entry point to manage policy definitions</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.VirtualMachineImages">
+            <returns>entry point to manage virtual machine images</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.VirtualMachineExtensionImages">
+            <returns>entry point to manage virtual machine extension images</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.AvailabilitySets">
+            <returns>entry point to manage availability sets</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.Vaults">
+            <returns>entry point to manage Azure key vaults</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.TrafficManagerProfiles">
+            <returns>entry point to manage Traffic Manager profiles</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.DnsZones">
+            <returns>entry point to manage DNS zones</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.PrivateDnsZones">
+            <returns>entry point to manage private DNS zones</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.SqlServers">
+            <returns>entry point to manage SQL servers</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.RedisCaches">
+            <returns>entry point to manage Redis caches</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.CdnProfiles">
+            <returns>entry point to manage CDN profiles</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.WebApps">
+            <returns>entry point to manage web apps</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.AppServices">
+            <returns>entry point to manage app services</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.Azure.Subscriptions">
+            <returns>subscriptions that this authenticated client has access to</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Fluent.IAzureBeta">
+            <summary>
+            Members of IAzure that are in Beta
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.NetworkWatchers">
+            <summary>
+            Entry point to Azure Network Watcher management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.VirtualNetworkGateways">
+            <summary>
+            Entry point to Azure Virtual Network Gateways management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.LocalNetworkGateways">
+            <summary>
+            Entry point to Azure Local Network Gateways management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ExpressRouteCircuits">
+            <summary>
+            Entry point to Azure Express Route Circuits management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ApplicationSecurityGroups">
+            <summary>
+            Entry point to Application Security Groups management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.RouteFilters">
+            <summary>
+            Entry point to Route Filters management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.DdosProtectionPlans">
+            <summary>
+            Entry point to Azure DDoS protection plans management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.WebApps">
+            <summary>
+            Entry point to Azure Web App management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.AppServices">
+            <summary>
+            Entry point to Azure App Service management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.SearchServices">
+            <summary>
+            Entry point to Azure Search management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ContainerServices">
+            <summary>
+            Entry point to Azure Container Services management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.KubernetesClusters">
+            <summary>
+            Entry point to Azure Container Services (AKS) management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.CosmosDBAccounts">
+            <summary>
+            Entry point to CosmosDB account management
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ContainerGroups">
+            <summary>
+            Entry point to Azure container instance management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ContainerRegistries">
+            <summary>
+            Entry point to Azure container registry management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ManagementLocks">
+            <summary>
+            Entry point to manage locks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.Identities">
+            <summary>
+            Entry point to Managed Service Identity (MSI) management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.BatchAIWorkspaces">
+            <summary>
+            Entry point to Batch AI clusters management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.BatchAIUsages">
+            <summary>
+            Entry point to Batch AI usages management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ActivityLogs">
+            <summary>
+            Entry point to listing activity log events in Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.MetricDefinitions">
+            <summary>
+            Entry point to listing metric definitions in Azure
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.DiagnosticSettings">
+            <summary>
+            Entry point to Azure Diagnostic Settings management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.ActionGroups">
+            <summary>
+            Entry point to Azure Action Groups management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.Galleries">
+            <summary>
+            Entry point to manage compute galleries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.GalleryImages">
+            <summary>
+            Entry point to manage compute gallery images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzureBeta.GalleryImageVersions">
+            <summary>
+            Entry point to manage compute gallery image versions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ManagementClients">
+            <summary>
+            Gets all underlying management clients
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ServiceBusNamespaces">
+            <summary>
+            Entry point to Azure Service Bus namespace management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.LoadBalancers">
+            <summary>
+            Entry point to load balancer management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.AccessManagement">
+            <summary>
+            Entry point to authentication and authorization management in Azure
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ApplicationGateways">
+            <summary>
+            Entry point to application gateway management
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Fluent.IAzure.GetCurrentSubscription">
+            <summary>
+            Returns the subscription the API is currently configured to work with.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ResourceGroups">
+            <summary>
+            Entry point to resource group management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.StorageAccounts">
+            <summary>
+            Entry point to storage account management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.VirtualMachines">
+            <summary>
+            Entry point to virtual machine management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.VirtualMachineScaleSets">
+            <summary>
+            Entry point to virtual machine scale set management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.Networks">
+            <summary>
+            Entry point to virtual network management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.NetworkSecurityGroups">
+            <summary>
+            Entry point to network security group management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.PublicIPAddresses">
+            <summary>
+            Entry point to public IP address management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.NetworkInterfaces">
+            <summary>
+            Entry point to network interface management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.PrivateLinkServices">
+            <summary>
+            Entry point to private link service management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.AzureFirewalls">
+            <summary>
+            Entry point to Azure firewall management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.RouteTables">
+            <summary>
+            Entry point to route tables management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.Deployments">
+            <summary>
+            Entry point to Azure Resource Manager template deployment management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.PolicyAssignments">
+            <summary>
+            Entry point to Azure Resource Manager policy assignment management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.PolicyDefinitions">
+            <summary>
+            Entry point to Azure Resource Manager policy definition management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.VirtualMachineImages">
+            <summary>
+            Entry point to virtual machine image management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.VirtualMachineExtensionImages">
+            <summary>
+            Entry point to virtual machine extension image management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.AvailabilitySets">
+            <summary>
+            Entry point to availability set management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.Vaults">
+            <summary>
+            Entry point to Azure Key Vault management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.TrafficManagerProfiles">
+            <summary>
+            Entry point to Azure Traffic Manager management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.DnsZones">
+            <summary>
+            Entry point to DNS zone management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.PrivateDnsZones">
+            <summary>
+            Entry point to private DNS zone management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.SqlServers">
+            <summary>
+            Entry point to Azure SQL server management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.RedisCaches">
+            <summary>
+            Entry point to Azure Redis cache management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.CdnProfiles">
+            <summary>
+            Entry poing to content delivery network management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.VirtualMachineCustomImages">
+            <summary>
+            Entry point to virtual machine custom image management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.Disks">
+            <summary>
+            Entry point to virtual machine managed disk management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.Snapshots">
+            <summary>
+            Entry point to virtual machine managed disk snapshot management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ComputeSkus">
+            <summary>
+            Entry point to compute service SKU management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.EventHubNamespaces">
+            <summary>
+            Entry point to Event Hub namespace management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.EventHubs">
+            <summary>
+            Entry point to Event Hub management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.EventHubDisasterRecoveryPairings">
+            <summary>
+            Entry point to Event Hub disaster recovery pairing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.AlertRules">
+            <summary>
+            Entry point to Azure Monitor Alert Rules management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.AutoscaleSettings">
+            <summary>
+            Entry point to Azure Monitor Autoscale management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.ContainerRegistryTasks">
+            <summary>
+            Entry point to Azure Container registry tasks management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAzure.RegistryTaskRuns">
+            <summary>
+            Entry point to Azure Container registry task runs management.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Fluent.IAccessManagement">
+            <summary>
+            Exposes methods related to managing access permissions in Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.ActiveDirectoryUsers">
+            <summary>
+            Entry point to Azure Active Directory user management. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.ActiveDirectoryGroups">
+            <summary>
+            Entry point to Azure Active Directory group management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.ServicePrincipals">
+            <summary>
+            Entry point to Azure Active Directory service principal management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.ActiveDirectoryApplications">
+            <summary>
+            Entry point to Azure Active Directory application management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.RoleDefinitions">
+            <summary>
+            Entry point to Azure Active Directory role definition management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Fluent.IAccessManagement.RoleAssignments">
+            <summary>
+            Entry point to Azure Active Directory role assignemnt management.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -427,11 +427,27 @@
             If a given query option is bound it should be removed from this collection.
             </summary>
         </member>
+        <member name="F:Microsoft.Data.OData.Query.BindingState.bindingRecursionDepth">
+            <summary>
+            Counter to keep track of current recursion depth of binding. Initialized to zero.
+            </summary>
+        </member>
         <member name="M:Microsoft.Data.OData.Query.BindingState.#ctor(Microsoft.Data.OData.Query.ODataUriParserConfiguration)">
             <summary>
             Constructs a <see cref="T:Microsoft.Data.OData.Query.BindingState"/> with the given <paramref name="configuration"/>.
             </summary>
             <param name="configuration">The configuration used for binding.</param>
+        </member>
+        <member name="M:Microsoft.Data.OData.Query.BindingState.RecurseEnter">
+            <summary>
+            Marks the fact that a recursive method was entered, and checks that the depth is allowed.
+            Default limit is 800 defined by <code>ODataUriParserSettings.DefaultFilterLimit</code>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.OData.Query.BindingState.RecurseLeave">
+            <summary>
+            Marks the fact that a recursive method is leaving.
+            </summary>
         </member>
         <member name="P:Microsoft.Data.OData.Query.BindingState.Model">
             <summary>

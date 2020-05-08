@@ -1,0 +1,1573 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Management.Msi.Fluent</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess">
+            <summary>
+            The stage of the identity definition allowing to set access role (permission) for it
+            to access a resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource. An applications running on an Azure service with this identity
+            can use this permission to access the resource.
+            </summary>
+            <param name="resource">The resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource identified by the given resource id. An applications running
+            on an Azure service with this identity can use this permission to access the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource. An applications running on an Azure service with
+            this identity can use this permission to access the resource.
+            </summary>
+            <param name="resource">Scope of the access represented as ARM resource.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessTo(System.String,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource identified by the given resource id. An applications
+            running on an Azure service with this identity can use this permission to access
+            the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessToCurrentResourceGroup(Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on the resource group that identity resides. An applications running on an Azure
+            service with this identity can use this permission to access the resource group.
+            </summary>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithAccess.WithAccessToCurrentResourceGroup(System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on the resource group that identity resides. An applications running
+            on an Azure service with this identity can use this permission to access the
+            resource group.
+            </summary>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithCreate">
+            <summary>
+            The stage of the identity definition which contains all the minimum required inputs for
+            the resource to be created but also allows for any other optional settings to be specified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IBlank">
+            <summary>
+            The first stage of an identity definition.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IWithGroup">
+            <summary>
+            The stage of the identity definition allowing to specify the resource group.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Definition.IDefinition">
+            <summary>
+            Container interface for all the definitions related to identity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IUpdate">
+            <summary>
+            The template for an identity update operation, containing all the settings that can be modified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess">
+            <summary>
+            The stage of the identity update allowing to set access role (permission) for it
+            to access a resource or remove an assigned role.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithoutAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that an access role assigned to the identity should be removed.
+            </summary>
+            <param name="resourceId">Id of the resource that identity has access.</param>
+            <param name="role">The access role assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource. An applications running on an Azure service with this identity
+            can use this permission to access the resource.
+            </summary>
+            <param name="resource">The resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource identified by the given resource id. An applications running
+            on an Azure service with this identity can use this permission to access the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource. An applications running on an Azure service with
+            this identity can use this permission to access the resource.
+            </summary>
+            <param name="resource">Scope of the access represented as ARM resource.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessTo(System.String,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource identified by the given resource id. An applications
+            running on an Azure service with this identity can use this permission to access
+            the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessToCurrentResourceGroup(Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on the resource group that identity resides. An applications running on an Azure
+            service with this identity can use this permission to access the resource group.
+            </summary>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithAccessToCurrentResourceGroup(System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on the resource group that identity resides. An applications running
+            on an Azure service with this identity can use this permission to access the
+            resource group.
+            </summary>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Identity.Update.IWithAccess.WithoutAccess(Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment)">
+            <summary>
+            Specifies that an access role assigned to the identity should be removed.
+            </summary>
+            <param name="roleAssignment">Describes an existing role assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IIdentities">
+            <summary>
+            Entry point to Azure Managed Service Identity (MSI) Identity resource management API.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IIdentity">
+            <summary>
+            An immutable client-side representation of an Azure Managed Service Identity (MSI) Identity resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IIdentity.ClientId">
+            <summary>
+            Gets id of the Azure Active Directory application associated with the identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IIdentity.TenantId">
+            <summary>
+            Gets id of the Azure Active Directory tenant to which the identity belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IIdentity.PrincipalId">
+            <summary>
+            Gets id of the Azure Active Directory service principal object associated with the identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IIdentity.ClientSecretUrl">
+            <summary>
+            Gets the url that can be queried to obtain the identity credentials.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl">
+             <summary>
+             The implementation for Identities.
+             </summary>
+            GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1zaS5pbXBsZW1lbnRhdGlvbi5JZGVudGl0ZXNJbXBs
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl.Microsoft#Azure#Management#ResourceManager#Fluent#Core#CollectionActions#ISupportsCreating{Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IBlank}#Define(System.String)">
+            <summary>
+            Begins a definition for a new resource.
+            This is the beginning of the builder pattern used to create top level resources
+            in Azure. The final method completing the definition and starting the actual resource creation
+            process in Azure is  Creatable.create().
+            Note that the  Creatable.create() method is
+            only available at the stage of the resource definition that has the minimum set of input
+            parameters specified. If you do not see  Creatable.create() among the available methods, it
+            means you have not yet specified all the required input settings. Input settings generally begin
+            with the word "with", for example: <code>.withNewResourceGroup()</code> and return the next stage
+            of the resource definition, as an interface in the "fluent interface" style.
+            </summary>
+            <param name="name">The name of the new resource.</param>
+            <return>The first stage of the new resource definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl.#ctor(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,Microsoft.Azure.Management.Msi.Fluent.IMsiManager)">
+            GENMHASH:D841767260CA3AE47D20B12A81460B10:0FCD47CBCD9128C3D4A03458C5796741
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl.Define(System.String)">
+            GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl.WrapModel(System.String)">
+            GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:C87A4958E891DCFF059719350F8DBD18
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentitesImpl.WrapModel(Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner)">
+            GENMHASH:20418A1938290FF37C165FEFC11BE339:45C3BD03A5E0CBA65A6C97B302C1DA6F
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl">
+             <summary>
+             The implementation for Identity and its create and update interfaces.
+             </summary>
+            GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1zaS5pbXBsZW1lbnRhdGlvbi5JZGVudGl0eUltcGw=
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource. An applications running on an Azure service with this identity
+            can use this permission to access the resource.
+            </summary>
+            <param name="resource">The resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource identified by the given resource id. An applications running
+            on an Azure service with this identity can use this permission to access the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource. An applications running on an Azure service with
+            this identity can use this permission to access the resource.
+            </summary>
+            <param name="resource">Scope of the access represented as ARM resource.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessTo(System.String,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource identified by the given resource id. An applications
+            running on an Azure service with this identity can use this permission to access
+            the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithoutAccess(Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment)">
+            <summary>
+            Specifies that an access role assigned to the identity should be removed.
+            </summary>
+            <param name="roleAssignment">Describes an existing role assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessToCurrentResourceGroup(Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on the resource group that identity resides. An applications running on an Azure
+            service with this identity can use this permission to access the resource group.
+            </summary>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithAccessToCurrentResourceGroup(System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on the resource group that identity resides. An applications running
+            on an Azure service with this identity can use this permission to access the
+            resource group.
+            </summary>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Update#IWithAccess#WithoutAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that an access role assigned to the identity should be removed.
+            </summary>
+            <param name="resourceId">Id of the resource that identity has access.</param>
+            <param name="role">The access role assigned to the identity.</param>
+            <return>The next stage of the update.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource. An applications running on an Azure service with this identity
+            can use this permission to access the resource.
+            </summary>
+            <param name="resource">The resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on an ARM resource identified by the given resource id. An applications running
+            on an Azure service with this identity can use this permission to access the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource. An applications running on an Azure service with
+            this identity can use this permission to access the resource.
+            </summary>
+            <param name="resource">Scope of the access represented as ARM resource.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessTo(System.String,System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on an ARM resource identified by the given resource id. An applications
+            running on an Azure service with this identity can use this permission to access
+            the resource.
+            </summary>
+            <param name="resourceId">Id of the resource to access.</param>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessToCurrentResourceGroup(Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role)
+            on the resource group that identity resides. An applications running on an Azure
+            service with this identity can use this permission to access the resource group.
+            </summary>
+            <param name="role">Access role to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#Identity#Definition#IWithAccess#WithAccessToCurrentResourceGroup(System.String)">
+            <summary>
+            Specifies that the identity should have the given access (described by the role
+            definition) on the resource group that identity resides. An applications running
+            on an Azure service with this identity can use this permission to access the
+            resource group.
+            </summary>
+            <param name="roleDefinitionId">Access role definition to assigned to the identity.</param>
+            <return>The next stage of the definition.</return>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#IIdentity#ClientId">
+            <summary>
+            Gets id of the Azure Active Directory application associated with the identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#IIdentity#TenantId">
+            <summary>
+            Gets id of the Azure Active Directory tenant to which the identity belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#IIdentity#ClientSecretUrl">
+            <summary>
+            Gets the url that can be queried to obtain the identity credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.Microsoft#Azure#Management#Msi#Fluent#IIdentity#PrincipalId">
+            <summary>
+            Gets id of the Azure Active Directory service principal object associated with the identity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.#ctor(System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,Microsoft.Azure.Management.Msi.Fluent.IMsiManager)">
+            GENMHASH:35C41CF8EA2B651DBCD26FE5A9B115F3:5000AB36D4511145216DD6380463F729
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithoutAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            GENMHASH:73A75260B8EDAA942E9403177A3544DB:2CA42958642F6FA1C5AA7E85785D66B4
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.ClientId">
+            GENMHASH:7B85BC19A12FE70FA9CB1E2E3F017EED:68C0AA12C5BD2781831CD7C4B29E5550
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.IdProvider">
+            GENMHASH:18397684B4C4DF93493896F6C894F585:4F8CFD4086B8F5614B957F170AA0C22A
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.TenantId">
+            GENMHASH:DA183CCEBC00D21096D59D1B439F4E2F:2E310B86723C08380AC47D35B3E5AEEF
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.PrincipalId">
+            GENMHASH:D88CAA570CC8B4DF8BD60ED918B5BBBE:3BF721FD7650311A6E8E8D610A45E1EB
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            GENMHASH:9E99E28677511E2DF950125EDB997762:7C1D8EF04190738EFBE34E23EE9A2713
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessTo(System.String,Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            GENMHASH:0CEE95C0D1098AAAC5BF7C869DE68D7D:E5512083F6DA7EA2BA516BF9E845E0A9
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessTo(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,System.String)">
+            GENMHASH:42891E3932C5EAEFFAD237F428099764:67B4FF5C4E621F31280157F98661447B
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessTo(System.String,System.String)">
+            GENMHASH:98F34D61BDC6DB6BB15851054E2EA4B1:F82A7A6E1E655681DA6796A4A3163D31
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessToCurrentResourceGroup(Microsoft.Azure.Management.Graph.RBAC.Fluent.BuiltInRole)">
+            GENMHASH:E52BA5580C6DD688687D5F7962138CA3:C76E712B3F0BFB0C78333420FF42894C
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithAccessToCurrentResourceGroup(System.String)">
+            GENMHASH:E4BA8B667A9B8EBB33544679E438B0C4:739831CB1E5F5DA5BD5413DEA9A6E093
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.ClientSecretUrl">
+            GENMHASH:6A6233D5A6936441292FB128F4E3011A:11D4D4AD3CE5864DC7FF9FCD6C31A406
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.WithoutAccess(Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment)">
+            GENMHASH:EF11EC04DEA31F31CA7F868E3D094F58:7395BD5AAA04C503F691C11E26A6A807
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.GetInnerAsync(System.Threading.CancellationToken)">
+            GENMHASH:5AD91481A0966B059A478CD4E9DD9466:A65DE7A931E0213F826A5B6E91CBE2D3
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IdentityImpl.CreateResourceAsync(System.Threading.CancellationToken)">
+            GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:72B6F0E6E03A05991A72A4FF9555BB50
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient">
+            <summary>
+            The Managed Service Identity Client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.SubscriptionId">
+            <summary>
+            The Id of the Subscription to which the identity belongs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.ApiVersion">
+            <summary>
+            Version of API to invoke.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.AcceptLanguage">
+            <summary>
+            The preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.LongRunningOperationRetryTimeout">
+            <summary>
+            The retry timeout in seconds for Long Running Operations. Default
+            value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.GenerateClientRequestId">
+            <summary>
+            Whether a unique x-ms-client-request-id should be generated. When
+            set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IManagedServiceIdentityClient.UserAssignedIdentities">
+            <summary>
+            Gets the IUserAssignedIdentitiesOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity
+            provider
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity
+            provider
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations">
+            <summary>
+            UserAssignedIdentitiesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.ListByResourceGroupWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or update an identity in the specified subscription and
+            resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to create or update the identity
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.UpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Update an identity in the specified subscription and resource
+            group.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to update the identity
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets the identity.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes the identity.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.ListBySubscriptionNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations.ListByResourceGroupNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient">
+            <summary>
+            The Managed Service Identity Client.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.SubscriptionId">
+            <summary>
+            The Id of the Subscription to which the identity belongs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.ApiVersion">
+            <summary>
+            Version of API to invoke.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.AcceptLanguage">
+            <summary>
+            The preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.LongRunningOperationRetryTimeout">
+            <summary>
+            The retry timeout in seconds for Long Running Operations. Default value is
+            30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.GenerateClientRequestId">
+            <summary>
+            Whether a unique x-ms-client-request-id should be generated. When set to
+            true a unique x-ms-client-request-id value is generated and included in
+            each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.UserAssignedIdentities">
+            <summary>
+            Gets the IUserAssignedIdentitiesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.#ctor(Microsoft.Azure.Management.ResourceManager.Fluent.Core.RestClient)">
+            <summary>
+            Initializes a new instance of the ManagedServiceIdentityClient class.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner">
+            <summary>
+            Describes an identity resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.#ctor">
+            <summary>
+            Initializes a new instance of the IdentityInner class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Guid},System.Nullable{System.Guid},System.Nullable{System.Guid},System.String,System.String)">
+            <summary>
+            Initializes a new instance of the IdentityInner class.
+            </summary>
+            <param name="id">The id of the created identity.</param>
+            <param name="name">The name of the created identity.</param>
+            <param name="location">The Azure region where the identity
+            lives.</param>
+            <param name="tags">Resource tags</param>
+            <param name="tenantId">The id of the tenant which the identity
+            belongs to.</param>
+            <param name="principalId">The id of the service principal object
+            associated with the created identity.</param>
+            <param name="clientId">The id of the app associated with the
+            identity. This is a random generated UUID by MSI.</param>
+            <param name="clientSecretUrl"> The ManagedServiceIdentity DataPlane
+            URL that can be queried to obtain the identity credentials. If
+            identity is user assigned, then the clientSecretUrl will not be
+            present in the response, otherwise it will be present.</param>
+            <param name="type">The type of resource i.e.
+            Microsoft.ManagedIdentity/userAssignedIdentities. Possible values
+            include: 'Microsoft.ManagedIdentity/userAssignedIdentities'</param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.TenantId">
+            <summary>
+            Gets the id of the tenant which the identity belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.PrincipalId">
+            <summary>
+            Gets the id of the service principal object associated with the
+            created identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.ClientId">
+            <summary>
+            Gets the id of the app associated with the identity. This is a
+            random generated UUID by MSI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner.ClientSecretUrl">
+            <summary>
+            Gets  The ManagedServiceIdentity DataPlane URL that can be queried
+            to obtain the identity credentials. If identity is user assigned,
+            then the clientSecretUrl will not be present in the response,
+            otherwise it will be present.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Models.Operation">
+            <summary>
+            Microsoft.ManagedIdentity Operation.
+            </summary>
+            <remarks>
+            Operation supported by the Microsoft.ManagedIdentity REST API.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.Operation.#ctor(System.String,Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">Operation Name.</param>
+            <param name="display">Operation Display.</param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.Operation.Name">
+            <summary>
+            Gets or sets operation Name.
+            </summary>
+            <remarks>
+            The name of the REST Operation. This is of the format
+            {provider}/{resource}/{operation}.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.Operation.Display">
+            <summary>
+            Gets or sets operation Display.
+            </summary>
+            <remarks>
+            The object that describes the operation.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay">
+            <summary>
+            Operation Display.
+            </summary>
+            <remarks>
+            The object that describes the operation.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.#ctor">
+            <summary>
+            Initializes a new instance of the OperationDisplay class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the OperationDisplay class.
+            </summary>
+            <param name="provider">Resource Provider Name.</param>
+            <param name="operation">Operation Type.</param>
+            <param name="resource">Resource Type.</param>
+            <param name="description">Operation description</param>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.Provider">
+            <summary>
+            Gets or sets resource Provider Name.
+            </summary>
+            <remarks>
+            Friendly name of the resource provider.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.Operation">
+            <summary>
+            Gets or sets operation Type.
+            </summary>
+            <remarks>
+            The type of operation. For example: read, write, delete.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.Resource">
+            <summary>
+            Gets or sets resource Type.
+            </summary>
+            <remarks>
+            The resource type on which the operation is performed.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.OperationDisplay.Description">
+            <summary>
+            Gets or sets operation description
+            </summary>
+            <remarks>
+            A description of the operation.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Models.UserAssignedIdentities">
+            <summary>
+            Defines values for UserAssignedIdentities.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Operations.#ctor(Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.Operations.Client">
+            <summary>
+            Gets a reference to the ManagedServiceIdentityClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity provider
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.Operations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity provider
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.OperationsExtensions.ListAsync(Microsoft.Azure.Management.Msi.Fluent.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity provider
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.OperationsExtensions.ListNextAsync(Microsoft.Azure.Management.Msi.Fluent.IOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists available operations for the Microsoft.ManagedIdentity provider
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations">
+            <summary>
+            UserAssignedIdentitiesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.#ctor(Microsoft.Azure.Management.Msi.Fluent.ManagedServiceIdentityClient)">
+            <summary>
+            Initializes a new instance of the UserAssignedIdentitiesOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.Client">
+            <summary>
+            Gets a reference to the ManagedServiceIdentityClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.ListByResourceGroupWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or update an identity in the specified subscription and resource
+            group.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to create or update the identity
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.UpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Update an identity in the specified subscription and resource group.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to update the identity
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets the identity.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes the identity.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.ListBySubscriptionNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperations.ListByResourceGroupNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions">
+            <summary>
+            Extension methods for UserAssignedIdentitiesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.ListBySubscriptionAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.ListByResourceGroupAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.CreateOrUpdateAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Threading.CancellationToken)">
+            <summary>
+            Create or update an identity in the specified subscription and resource
+            group.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to create or update the identity
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.UpdateAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.String,Microsoft.Azure.Management.Msi.Fluent.Models.IdentityInner,System.Threading.CancellationToken)">
+            <summary>
+            Update an identity in the specified subscription and resource group.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='parameters'>
+            Parameters to update the identity
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.GetAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the identity.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.DeleteAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the identity.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the Resource Group to which the identity belongs.
+            </param>
+            <param name='resourceName'>
+            The name of the identity resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.ListBySubscriptionNextAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.UserAssignedIdentitiesOperationsExtensions.ListByResourceGroupNextAsync(Microsoft.Azure.Management.Msi.Fluent.IUserAssignedIdentitiesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists all the userAssignedIdentities available under the specified
+            ResourceGroup.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.MsiManager.Authenticate(Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentials,System.String)">
+            <summary>
+            Creates an instance of MsiManager that exposes Managed Service Identity (MSI) resource management API entry points.
+            </summary>
+            <param name="credentials">the credentials to use</param>
+            <param name="subscriptionId">the subscription UUID</param>
+            <returns>the MsiManager</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.MsiManager.Authenticate(Microsoft.Azure.Management.ResourceManager.Fluent.Core.RestClient,System.String)">
+            <summary>
+            Creates an instance of MsiManager that exposes Managed Service Identity (MSI) resource management API entry points.
+            </summary>
+            <param name="restClient">the RestClient to be used for API calls.</param>
+            <param name="subscriptionId">the subscription UUID</param>
+            <returns>the StorageManager</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.Msi.Fluent.MsiManager.Configure">
+            <summary>
+            Get a Configurable instance that can be used to create MsiManager with optional configuration.
+            </summary>
+            <returns>the instance allowing configurations</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.MsiManager.IConfigurable">
+            <summary>
+            The inteface allowing configurations to be set.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.Azure.Management.Msi.Fluent.MsiManager.Configurable.Authenticate(Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentials,System.String)" -->
+        <member name="T:Microsoft.Azure.Management.Msi.Fluent.IMsiManager">
+            <summary>
+            Entry point to Azure Managed Service Identity (MSI) resource management.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IMsiManager.Identities">
+            <summary>
+            Gets the Managed Service Identity (MSI) management API entry point.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Management.Msi.Fluent.IMsiManager.GraphRbacManager">
+            <summary>
+            The Graph RBAC manager.
+            </summary>
+        </member>
+    </members>
+</doc>

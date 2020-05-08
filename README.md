@@ -1,4 +1,4 @@
-# Project MySmartScale - Community version
+# Project MySmartScale - Community version - Preview
 
 This repo provides the community version of "Project MySmartScale". The community version manages up to five workers. This version is as-it-is without support. For a supported version with more then five managed workers contact my employer (sales@sepago.de).
 
@@ -246,6 +246,7 @@ Additional configurations (if you start, use the default values):
 | Option                                                       | Description                                                  | Range  | Default |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ | ------- |
 | Security serve in %                                          | Percent of spare in percent                                  | 0..1   | 0       |
+| Add sessions for calculation                                 | Add a count of session on top of the existing ones for calculation of the needed workers. Can be used to give an +1 for VDI mode (have at least one free worker running) | 0..n   | 0       |
 | Logon prediction based on n weeks                            | Prediction based of the last n weeks                         | 0..8   | 3       |
 | Logon prediction based on n days                             | Prediction based of the last n days (if weeks couldn't applied) | 0..7   | 3       |
 | Logon acceleration based on the last n minutes               | Calculate the logon acceleration from the last n minutes to now | 0..5   | 1       |

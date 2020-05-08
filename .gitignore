@@ -14,6 +14,7 @@
 
 Push.cmd
 push.cmd
+push-Preview.cmd
 
 # Build results
 [Dd]ebug/

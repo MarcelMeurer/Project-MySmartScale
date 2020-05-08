@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.KeyVault.WebKey</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Base64UrlJsonConverter.ToBase64UrlString(System.Byte[])">
+            <summary>
+            Converts a byte array to a Base64Url encoded string
+            </summary>
+            <param name="input">The byte array to convert</param>
+            <returns>The Base64Url encoded form of the input</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Base64UrlJsonConverter.FromBase64UrlString(System.String)">
+            <summary>
+            Converts a Base64Url encoded string to a byte array
+            </summary>
+            <param name="input">The Base64Url encoded string</param>
+            <returns>The byte array represented by the enconded string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.Base64UrlJsonConverter.Pad(System.String)">
+            <summary>
+            Adds padding to the input
+            </summary>
+            <param name="input"> the input string </param>
+            <returns> the padded string </returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.EccExtension">
+            <summary>
+            Because the current version of ECC is not supporting some of the operations needed for WebKey,
+            those operations are added as ECC extension.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.EccExtension.ExportParameters(System.Security.Cryptography.ECDsa,System.Boolean)">
+            <summary>
+            Exports EC parameters from a CNG object.
+            </summary>
+            <param name="ecdsa">The CNG object initialized with desired key</param>
+            <param name="includePrivateParameters">Determines whether the private key part is to be exported.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.ECParameters">
+            <summary>
+            EC parameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.ECParameters.Curve">
+            <summary>
+            Name of this curve.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.ECParameters.X">
+            <summary>
+            X coordinate for the Elliptic Curve point.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.ECParameters.Y">
+            <summary>
+            Y coordinate for the Elliptic Curve point.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.ECParameters.D">
+            <summary>
+            ECC private key.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey">
+            <summary>
+            As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kid">
+            <summary>
+            Key Identifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kty">
+            <summary>
+            Gets or sets supported JsonWebKey key types (kty) for Elliptic
+            Curve, RSA, HSM, Octet, usually RSA. Possible values include:
+            'EC', 'RSA', 'RSA-HSM', 'oct'
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.KeyOps">
+            <summary>
+            Supported Key Operations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.N">
+            <summary>
+            RSA modulus, in Base64.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.E">
+            <summary>
+            RSA public exponent, in Base64.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.DP">
+            <summary>
+            RSA Private Key Parameter
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.DQ">
+            <summary>
+            RSA Private Key Parameter
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.QI">
+            <summary>
+            RSA Private Key Parameter
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.P">
+            <summary>
+            RSA secret prime
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Q">
+            <summary>
+            RSA secret prime, with p &lt; q
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.CurveName">
+            <summary>
+            The curve for Elliptic Curve Cryptography (ECC) algorithms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.X">
+            <summary>
+            X coordinate for the Elliptic Curve point.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Y">
+            <summary>
+            Y coordinate for the Elliptic Curve point.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.D">
+            <summary>
+            RSA private exponent or ECC private key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.K">
+            <summary>
+            Symmetric key
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.T">
+            <summary>
+            HSM Token, used with "Bring Your Own Key"
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ExtensionData">
+            <summary>
+            Holds properties that are not part of current schema.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.VisitProperties(System.Action{System.String,System.Object})">
+            <summary>
+            Iterates over all JSON properties of this object, calling the specified visitor.
+            </summary>
+            All JSON properties are visited. This includes normal properties, properties that are not useful for the
+            key type, and properties that are not part of current schema (extension data).
+            Users must assume the properties are visited in random order.
+            <param name="visitor">A visitor that will be called for each property.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor(System.Security.Cryptography.Aes)">
+            <summary>
+            Converts an AES object to a WebKey of type Octet
+            </summary>
+            <param name="aesProvider"></param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor(System.Security.Cryptography.ECDsa,System.Boolean)">
+            <summary>
+            Initializes a new instance with the key provided by the ECDsa object.
+            </summary>
+            <param name="ecsda">The ECDsa object previously initialized with the desired key.</param>
+            <param name="includePrivateParameters">Tells if the instance must inclue private parameters.
+            This requires the key in the ECDsa object to include private material and be marked as exportable.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor(Microsoft.Azure.KeyVault.WebKey.ECParameters)">
+            <summary>
+            Converts a ECParameters object to a WebKey of type EC.
+            </summary>
+            <param name="ecParameters">The EC object to convert</param>
+            <returns>A WebKey representing the EC object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor(System.Security.Cryptography.RSA,System.Boolean)">
+            <summary>
+            Converts a RSA object to a WebKey of type RSA.
+            </summary>
+            <param name="rsaProvider">The RSA object to convert</param>
+            <param name="includePrivateParameters">True to include the RSA private key parameters</param>
+            <returns>A WebKey representing the RSA object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.#ctor(System.Security.Cryptography.RSAParameters)">
+            <summary>
+            Converts a RSAParameters object to a WebKey of type RSA.
+            </summary>
+            <param name="rsaParameters">The RSA object to convert</param>
+            <returns>A WebKey representing the RSA object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Equals(Microsoft.Azure.KeyVault.WebKey.JsonWebKey)">
+            <summary>
+            Compares <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> objects
+            </summary>
+            <param name="other"> the <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> object to compare with </param>
+            <returns> whether the <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> objects are equals </returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.HasPrivateKey">
+            <summary>
+            Verifies whether this object has a private key
+            </summary>
+            <returns> True if the object has private key; false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.IsValid">
+            <summary>
+            Determines if the WebKey object is valid according to the rules for
+            each of value of JsonWebKeyType.
+            </summary>
+            <returns>true if the WebKey is valid</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ToAes">
+            <summary>
+            Converts a WebKey of type Octet to an AES object.
+            </summary>
+            <returns>An AES object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.CanonicalizeRSA">
+            <summary>
+            Remove leading zeros from all RSA parameters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ToRSA(System.Boolean)">
+            <summary>
+            Converts a WebKey of type RSA or RSAHSM to a RSA object
+            </summary>
+            <param name="includePrivateParameters">Tells if private material must be included.</param>
+            <returns>An initialized RSA instance</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ToRSAParameters(System.Boolean)">
+            <summary>
+            Converts a WebKey of type RSA or RSAHSM to a RSA parameter object
+            </summary>
+            <param name="includePrivateParameters">Tells if private material must be included.</param>
+            <returns>An RSA parameter</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ToECDsa(System.Boolean)">
+            <summary>
+            Converts a WebKey of type EC or EC-HSM to an ECDsa object
+            </summary>
+            <param name="includePrivateParameters">Tells if private material must be included.</param>
+            <returns>An initialized ECDsa instance</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ToEcParameters(System.Boolean)">
+            <summary>
+            Converts a WebKey of type EC or EC-HSM to an EC parameter object.
+            </summary>
+            <param name="includePrivateParameters">Tells if private material must be included.</param>
+            <returns>An EC parameter object</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.ClearMemory">
+            <summary>
+            Best effort to clear private key material 
+            Not strong guarantee since GC may move the arrays during compact.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyCurveName">
+            <summary>
+            Elliptic Curve Cryptography (ECC) curve names.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyCurveName.AllCurves">
+            <summary>
+            All curves for EC. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyCurveName.GetKeyParameterSize(System.String)">
+            <summary>
+            Returns the required size, in bytes, of each key parameters (X, Y and D), or -1 if the curve is unsupported. 
+            </summary>
+            <param name="curve">The curve for which key parameter size is required.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyEncryptionAlgorithm">
+            <summary>
+            Supported JsonWebKey algorithms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyEncryptionAlgorithm.AllAlgorithms">
+            <summary>
+            All algorithms names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation">
+            <summary>
+            Supported JsonWebKey operations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.AllOperations">
+            <summary>
+            All operations names.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeySignatureAlgorithm">
+            <summary>
+            Supported JsonWebKey algorithms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeySignatureAlgorithm.AllAlgorithms">
+            <summary>
+            All algorithms names. Use clone to avoid FxCop violation
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType">
+            <summary>
+            Supported JsonWebKey key types (kty)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier">
+            <summary>
+            A class that verifies instances of <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> according to key type. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Kty">
+            <summary>
+            Indicates which type of key this verifier applies to.
+            </summary>
+            This is typically a value of <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType"/>, though other values are allowed if registered
+            with the <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Register(Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier)"/> method.
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.#ctor(System.String)">
+            <summary>
+            Initializes a new instance setting the specified value in the <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Kty"/> property.
+            </summary>
+            <param name="kty">Indicates which type of key this verifier applies to.</param>
+            <exception cref="T:System.ArgumentNullException">If the specified value is <code>null</code>, empty or whitespace.</exception>
+            <exception cref="T:System.ArgumentException">If the specified value contains invalid characters.</exception>
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyCrypto">
+            <summary>
+            Tells if the type of key verified by this object supports public key algorithms.
+            </summary>
+            Note to implementers: if this method returns <code>true</code>, the methods
+            <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/>, <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)"/>, <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPrivateKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> and 
+            <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPrivateKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)"/> must be overriden.
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyCrypto">
+            <summary>
+            Tells if the type of key verified by this object supports symmetric key algorithms.
+            </summary>
+            Note to implementers: if this method returns <code>true</code>, the methods
+            <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> and <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)"/> must be overriden.
+        </member>
+        <member name="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.HasSecretKey">
+            <summary>
+            Tells if the type of key verified by this object contains a secret component, such as a hardware key token.
+            </summary>
+            Note to implementers: if this method returns <code>true</code>, the methods
+            <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> and <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)"/> must be overriden.
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains values at properties that represent the public key. 
+            </summary>
+            <para>If all required public key properties (for the key type) are specified in the instance, the method must return
+            <code>true</code> and not modify the <paramref name="missingProps"/> parameter.</para>
+            <para>If some public key property is missing, the method must return <code>false</code> and set <paramref name="missingProps"/>
+            with a value - typically a <see cref="T:System.Collections.Generic.List`1"/> - containing all missing properties.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="missingProps">A reference to a variable that tells the list of missing properties. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains a possibly valid public key (see remarks). 
+            </summary>
+            <para>Because fully validating a key may require unfeasable amount of resources, this method only has to check
+            for obvious issues. As a guideline, we say that the code only verifies obvious issues if it runs in constant time.
+            It's perfectly valid for implementors to do nothing and simply return <code>true</code>.</para>
+            <para>This method assumes that <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> was called and returned <code>true</code>. It
+            doesn't test again for the presence of required properties. It may throw <see cref="T:System.NullReferenceException"/>
+            if the caller doesn't see <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> returning <code>true</code> first.</para>
+            <para>If the valiation code finds no issue, this method must return <code>true</code> without modifying the value of 
+            <paramref name="errorMsg"/>.</para>
+            <para>If some issue is found, this method must return <code>false</code> and tell more details in the
+            <paramref name="errorMsg"/> parameter.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="errorMsg">A reference to a variable that will contain an error message. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPrivateKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Same as <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/>, but for the private key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPrivateKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)">
+            <summary>
+            Same as <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsPublicKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)"/>, but for the private key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsAnyPrivateKeyParamSpecified(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains values in one or more properties that
+            represent the private key. 
+            </summary>
+            <para>This method is used to protect private key material from accidental leakage.</para>   
+            <para>If no private key property (for the key type) is specified in the instance, the method must return
+            <code>false</code> and not modify the <paramref name="specifiedProps"/> parameter.</para>
+            <para>If one or more private key property is specified, the method must return <code>true</code> and optionally
+            set <paramref name="specifiedProps"/> with a value - typically a <see cref="T:System.Collections.Generic.List`1"/> - containing the specified properties.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="specifiedProps">A reference to a variable that tells the list of specified properties. Callers must
+            set the variable to <code>null</code> and examine the value only if this method returns <code>true</code>.</param>
+            <returns><code>true</code> if a value is found in at least one property that describe the private key;
+            <code>false</code> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains values at properties that represent the symmetric key. 
+            </summary>
+            <para>If all required symmetric key properties (for the key type) are specified in the instance, the method must return
+            <code>true</code> and not modify the <paramref name="missingProps"/> parameter.</para>
+            <para>If some property is missing, the method must return <code>false</code> and set <paramref name="missingProps"/>
+            to a value - typically a <see cref="T:System.Collections.Generic.List`1"/> - containing all missing properties.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="missingProps">A reference to a variable that tells the list of missing properties. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains a possibly valid symmetric key (see remarks). 
+            </summary>
+            <para>Because fully validating a key may require unfeasable amount of resources, this method only has to check
+            for obvious issues. As a guideline, we say that the code only verifies obvious issues if it runs in constant time.
+            It's perfectly valid for implementors to do nothing and simply return <code>true</code>.</para>
+            <para>This method assumes that <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> was called and returned <code>true</code>. It
+            doesn't test again for the presence of required properties. It may throw <see cref="T:System.NullReferenceException"/>
+            if the caller doesn't see <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSymmetricKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> returning <code>true</code> first.</para>
+            <para>If the valiation code finds no issue, this method must return <code>true</code> without modifying the value of 
+            <paramref name="errorMsg"/>.</para>
+            <para>If some issue is found, this method must return <code>false</code> and tell more details in the
+            <paramref name="errorMsg"/> parameter.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="errorMsg">A reference to a variable that will contain an error message. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains values at properties that represent the secret key. 
+            </summary>
+            <para>If all required secret key properties (for the key type) are specified in the instance, the method must return
+            <code>true</code> and not modify the <paramref name="missingProps"/> parameter.</para>
+            <para>If some property is missing, the method must return <code>false</code> and set <paramref name="missingProps"/>
+            to a value - typically a <see cref="T:System.Collections.Generic.List`1"/> - containing all missing properties.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="missingProps">A reference to a variable that tells the list of missing properties. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyValid(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.String@)">
+            <summary>
+            Determines if the specified <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKey"/> instance contains a possibly valid secret key (see remarks). 
+            </summary>
+            <para>Because fully validating a key may require unfeasable amount of resources, this method only has to check
+            for obvious issues. As a guideline, we say that the code only verifies obvious issues if it runs in constant time.
+            It's perfectly valid for implementors to do nothing and simply return <code>true</code>.</para>
+            <para>This method assumes that <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> was called and returned <code>true</code>. It
+            doesn't test again for the presence of required properties. It may throw <see cref="T:System.NullReferenceException"/>
+            if the caller doesn't see <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.IsSecretKeyComplete(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,System.Collections.Generic.ICollection{System.String}@)"/> returning <code>true</code> first.</para>
+            <para>If the valiation code finds no issue, this method must return <code>true</code> without modifying the value of 
+            <paramref name="errorMsg"/>.</para>
+            <para>If some issue is found, this method must return <code>false</code> and tell more details in the
+            <paramref name="errorMsg"/> parameter.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="errorMsg">A reference to a variable that will contain an error message. Callers must
+            set the variable to <code>null</code>, and examine the value only if this method returns <code>false</code>.</param>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.AddCompatibleOperations(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Adds to the specified collection all operations that can be performed with keys whose type is handled by
+            this object.
+            </summary>
+            For instance, if keys can only be used for digital signatures, this method should add only 
+            <see cref="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.Sign"/> and <see cref="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyOperation.Verify"/>. 
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.AddUsedProperties(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Adds to the specified collection all JsonWebKey properties that are useful to keys whose type is handled by
+            this object.
+            </summary>
+            <para>This method must add JSON property names, such as <code>"crv"</code>, <code>"p"</code>, etc. It must not add
+            C# property names.</para>
+            <para>This method doesn't have to add <code>"kid"</code>, <code>"kty"</code> and <code>"key_ops"</code>.
+            Thes properties are assumed to be useful to all keys.</para>. 
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.None">
+            <summary>
+            Use this value if you don't want to specify any other.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.DenyPrivateKey">
+            <summary>
+            Fails if any private key material is present. Use this to defend against leakage. 
+            </summary>
+            This value is only used for keys that support public key cryptography. It's ignored in other key types.
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.RequirePrivateKey">
+            <summary>
+            Fails if private key material is not fully present. Use this before storing or importing a JsonWebKey
+            value into a subsystem that needs to keep the private key. 
+            </summary>
+            This value is only used for keys that support public key cryptography. It's ignored in other key types.
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.DenyIncompatibleOperations">
+            <summary>
+            Fails if there the <code>"key_ops"</code> value of the verified key contains an incompatible operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.DenyExtraneousFields">
+            <summary>
+            Fails if the JsonWebKey object describes values at properties that are not used by the corresponding key type.
+            Use this to defend against properties incorrectly set, and also some forms of leakage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.VerifyDecrypt">
+            <summary>
+            Reserved for future use.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.VerifySign">
+            <summary>
+            Reserved for future use.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.ThrowException">
+            <summary>
+            Do not return <code>false</code> if the verification fails; throws an exception instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Verify(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options,System.String@)">
+            <summary>
+            Verifies the specified JsonWebKey instance. 
+            </summary>
+            <para>Verification first examines the <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kty"/> property to select a verifier instance
+            (for more information, see the <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Register(Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier)"/> method). If a verifier is found, it's used to check
+            if the key conforms to the corresponding key type.</para>
+            <param name="webKey">The instance to verify.</param>
+            <param name="options">Tells how verification is to behave.</param>
+            <param name="error">A reference to a variable that will tell the error message, if verification fails. This
+            is only set if the method returns <code>false</code>. If the method returns <code>true</code> or throws
+            an exception, the <paramref name="error"/> will not me modified.</param>
+            <returns><code>true</code> if the JsonWebKey value is valid, <code>false otherwise</code>.</returns>
+            <exception cref="T:System.ArgumentNullException">If the <paramref name="webKey"/> parameter is null.</exception>
+            <exception cref="T:System.ArgumentException">If the <paramref name="options"/> parameter contains invalid options.</exception>
+            <exception cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerificationException">If the JsonWebKey object is invalid and the option 
+                <see cref="F:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options.ThrowException"/> was specified.</exception>
+            <seealso cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options"/>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.VerifyByKeyType(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options,System.String@)">
+            <summary>
+            Verifies the specified JsonWebKey instance according to <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kty"/>.
+            </summary>
+            This method selects a verifier based on the value of <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKey.Kty"/>,
+            then calls the verifier's <see cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Verify(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options,System.String@)"/> method.
+            <param name="webKey"></param>
+            <param name="options"></param>
+            <param name="error"></param>
+            <seealso cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Verify(Microsoft.Azure.KeyVault.WebKey.JsonWebKey,Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Options,System.String@)"/>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Register(Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier)">
+            <summary>
+            Registers a verifier for a <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Kty"/> value.
+            </summary>
+            Throws exception is a previous verifier for same <see cref="P:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Kty"/> value is already registered.
+            There is no need to register verifiers for values described on <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType"/>.
+            <param name="verifier">The verifier to register.</param>
+            <seealso cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.GetVerifier(System.String)"/>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.GetVerifier(System.String)">
+            <summary>
+            Returns the verifier registered for the specified kty value, or null if the kty value was not registered.
+            </summary>
+            This method never returns null for values described on <see cref="T:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyType"/>.
+            <seealso cref="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.Register(Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier)"/>
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.SurroundWithQuotes(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Helper method that surrounds string values with double-quotes. 
+            </summary>
+            For instance, the strings Foo, Bar cause this method to return <code>"Foo", "Bar"</code>.
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.AddItem``1(System.Collections.Generic.ICollection{``0}@,``0)">
+            <summary>
+            Helper method that joins the operation of creating a collection (if required) and adding an item to it.
+            </summary>
+            If the collection is null, this method creates one of type <see cref="T:System.Collections.Generic.List`1"/>. Then it adds the specified item to the collection.
+        </member>
+        <member name="M:Microsoft.Azure.KeyVault.WebKey.JsonWebKeyVerifier.ValidateKeyParameterSize(System.Byte[],System.String,System.Int32,System.String@)">
+            <summary>
+            Helper method that validates the size of a byte array.
+            </summary>
+            <para>A valid array meets the following criteria:</para>
+            <list type="bullet">
+            <item><description>is not <code>null</code>;</description></item>
+            <item><description>the length is at least <paramref name="requiredSize"/>; and</description></item>
+            <item><description>excess leading bytes are all zeros.</description></item>
+            </list>
+            <param name="value">The array to validate.</param>
+            <param name="name">The array name, which may be used to build error messages.</param>
+            <param name="requiredSize">The required size, in bytes.</param>
+            <param name="errorMsg">A reference to a variable that will contain the error message. This is only set
+            if the method returns <code>false</code>.</param>
+            <returns><code>true</code> if the array has a valid size; <code>false otherwise</code>.</returns>
+        </member>
+    </members>
+</doc>
