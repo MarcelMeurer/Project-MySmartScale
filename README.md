@@ -203,6 +203,16 @@ ITPC-MySmartScale-Agent.exe -install
 
 This installs the agent as a scheduled task, which starts with the boot of the worker. The agent starts with the next boot of the worker.
 
+Hint for Windows 7 64 bit: Add the following key/value to allow using TLS 1.2:
+
+```
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
+
+Reg-Dword:	DisabledByDefault	Value: 0
+```
+
+
+
 ### Admin portal
 
 Go to the admin portal and login with your account which is in the admin group you defined above (auth:AdminUserGroup).
