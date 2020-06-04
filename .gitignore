@@ -15,6 +15,7 @@
 Push.cmd
 push.cmd
 push-Preview.cmd
+migrate-preview-to-master.cmd
 
 # Build results
 [Dd]ebug/
