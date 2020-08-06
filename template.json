@@ -151,7 +151,9 @@
               {"name":"AzureMonitor-Key","value":"[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('siteName')), '2015-03-20').primarySharedKey]"},
               {"name":"AzureMonitor-LogTypeName","value":"MySmartScale"},
               {"name":"AzureMonitor-Workspace","value":"[reference(resourceId('Microsoft.OperationalInsights/workspaces',parameters('siteName'))).customerId]"},
-              {"name":"PROJECT","value":"bin/Endpoint"}
+              {"name":"PROJECT","value":"bin/Endpoint"},
+              {"name":"ConsolidationMode","value":"2"}
+
             ],
             "connectionStrings": [
               {
