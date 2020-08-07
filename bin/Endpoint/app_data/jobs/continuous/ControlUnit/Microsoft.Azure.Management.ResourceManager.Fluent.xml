@@ -67,12 +67,35 @@
             <param name="environment">the environment to authenticate to</param>
             <returns>an authenticated credentials object</returns>
         </member>
+        <member name="M:Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentialsFactory.FromServicePrincipal(System.String,System.String,System.String,System.Boolean,System.String,Microsoft.Azure.Management.ResourceManager.Fluent.AzureEnvironment)">
+            <summary>
+            Creates a credentials object from a service principal.
+            </summary>
+            <param name="clientId">the client ID of the application the service principal is associated with</param>
+            <param name="certificatePath">the certificate file for the client ID</param>]
+            <param name="certificatePassword">the password for the certificate</param>
+            <param name="IsCertificateRollOverEnabled">Set it to true if certificate KeyVault/dSMS assistend certificate (Auto Rotation)</param>
+            <param name="tenantId">the tenant ID or domain the application is in</param>
+            <param name="environment">the environment to authenticate to</param>
+            <returns>an authenticated credentials object</returns>
+        </member>
         <member name="M:Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentialsFactory.FromServicePrincipal(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,Microsoft.Azure.Management.ResourceManager.Fluent.AzureEnvironment)">
             <summary>
             Creates a credentials object from a service principal.
             </summary>
             <param name="clientId">the client ID of the application the service principal is associated with</param>
             <param name="certificate">the X509 certificate for the client ID</param>
+            <param name="tenantId">the tenant ID or domain the application is in</param>
+            <param name="environment">the environment to authenticate to</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentialsFactory.FromServicePrincipal(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Boolean,System.String,Microsoft.Azure.Management.ResourceManager.Fluent.AzureEnvironment)">
+            <summary>
+            Creates a credentials object from a service principal.
+            </summary>
+            <param name="clientId">the client ID of the application the service principal is associated with</param>
+            <param name="certificate">the X509 certificate for the client ID</param>
+            <param name="IsCertificateRollOverEnabled">Set it to true if certificate KeyVault/dSMS assistend certificate (Auto Rotation)</param>
             <param name="tenantId">the tenant ID or domain the application is in</param>
             <param name="environment">the environment to authenticate to</param>
             <returns></returns>
