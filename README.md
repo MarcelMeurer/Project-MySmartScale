@@ -213,6 +213,19 @@ Reg-Dword:	DisabledByDefault	Value: 0
 
 
 
+### Advanced feature using WVD ARM version
+
+With the current version you can directly get the data from the WVD resources. Doing this, the drain mode of session host will be recognized and a start of a new session hosts occurs if needed. To directly connect the solution to the WVD ARM backend configure the following options:
+
+- Add the service principal with reader permission to the resource group containing the host pools
+- Go to the deployed resources and open the web app ending with "-data". Open configuration and change the following values:
+  ConsolidationMode to 3
+- Save the web app configuration
+
+Using the agent is still recommended to logoff users after a idle time and to got data about connected and disconnected sessions.
+
+
+
 ### Admin portal
 
 Go to the admin portal and login with your account which is in the admin group you defined above (auth:AdminUserGroup).
@@ -339,7 +352,7 @@ Important: Always update both web app one after the other.
 
 ## FAQ
 
-### Does the ControlUnit scale up new workers directly or is ther a delay?
+### Does the ControlUnit scale up new workers directly or is there a delay?
 
 The start of new workers takes place directly after the calculation of the number of new workers that will be needed. The current workload, logon acceleration and historical values serve as the basis. By consolidating the data of the individual workers every minute, the start is somewhat delayed. After the system has learned the workload over time, the workers are pre-started correctly. 
 
