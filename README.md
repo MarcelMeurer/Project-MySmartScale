@@ -221,6 +221,7 @@ With the current version you can directly get the data from the WVD resources. D
 - Go to the deployed resources and open the web app ending with "-data". Open configuration and change the following values:
   ConsolidationMode to 3
 - Save the web app configuration
+- Update the agent to the newest version (to use the time zone selector in the portal)
 
 Using the agent is still recommended to logoff users after a idle time and to got data about connected and disconnected sessions.
 
