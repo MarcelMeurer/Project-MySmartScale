@@ -2,6 +2,8 @@
 
 This repo provides the community version of "Project MySmartScale". The community version manages up to five workers. This version is as-it-is without support. For a supported version with more then five managed workers contact my employer (sales@sepago.de).
 
+The legal owner of this solution is sepago Gmbh, Dillenburger Str. 83, 51105 Cologne, Germany - https://www.sepago.com
+
 ## What is Project MySmartScale
 
 This project gives answers to a very important challenge regarding Windows Virtual Desktop or Citrix Virtual Apps and Desktops in Azure: In a cloud environment, virtual machines are paid based on “switched on” time – even if the resources are not in use. Managing the execution of session hosts is crucial for resource-efficient IT.
