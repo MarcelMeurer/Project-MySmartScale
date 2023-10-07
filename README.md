@@ -6,6 +6,10 @@ The legal owner of this solution is sepago Gmbh, Dillenburger Str. 83, 51105 Col
 
 ## What is Project MySmartScale
 
+**The project is outdated. Alternatively, check out the comprehensive solution for Azure Virtual Desktop: (Hydra for Azure Virtual Desktop)[https://github.com/MarcelMeurer/WVD-Hydra]
+  **
+
+
 This project gives answers to a very important challenge regarding Windows Virtual Desktop or Citrix Virtual Apps and Desktops in Azure: In a cloud environment, virtual machines are paid based on “switched on” time – even if the resources are not in use. Managing the execution of session hosts is crucial for resource-efficient IT.
 
 Project MySmartScale starts and smartly deallocates session hosts. It learns about the user’s behavior and actively logoffs sessions at the right time to save compute power – and money. This solution is 100% based on Azure platform services. 
