@@ -1,4 +1,5 @@
-**The project is outdated. Alternatively, check out the comprehensive solution for Azure Virtual Desktop: (Hydra for Azure Virtual Desktop)[https://github.com/MarcelMeurer/WVD-Hydra]**
+
+**The project is outdated. Alternatively, check out the comprehensive solution for Azure Virtual Desktop: Hydra for Azure Virtual Desktop: https://github.com/MarcelMeurer/WVD-Hydra**
 
 
 # Project MySmartScale - Community version - Preview
