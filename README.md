@@ -1,8 +1,9 @@
+# Reference to a complete AVD solution
+**Check out the comprehensive solution for Azure Virtual Desktop: Hydra for Azure Virtual Desktop: https://github.com/MarcelMeurer/WVD-Hydra**
 
-**The project is outdated. Alternatively, check out the comprehensive solution for Azure Virtual Desktop: Hydra for Azure Virtual Desktop: https://github.com/MarcelMeurer/WVD-Hydra**
 
 
-# Project MySmartScale - Community version - Preview
+## Project MySmartScale - Community version - Preview
 
 This repo provides the community version of "Project MySmartScale". The community version manages up to five workers. This version is as-it-is without support. For a supported version with more then five managed workers contact my employer (sales@sepago.de).
 
